@@ -21,7 +21,7 @@ q = 1; p = 1;
 
 % Number of matrices considered
 Matrices = [];
-numMat = 20; % number of matrices to be averaged %50
+numMat = 10; % number of matrices to be averaged %50
 
 % Construct random matrices 
 

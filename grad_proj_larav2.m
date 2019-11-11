@@ -12,7 +12,7 @@ while(k < kmax && err > tol)
     
     % Reset values
     Xold = Xnew;
-    step2 = 10^(-5); %5 or 6
+    step2 = 10^(-6); %5 or 6
     v = Xnew(sub2ind(size(Xnew), mis_i, mis_j));
     
 %     % Sparsity Check

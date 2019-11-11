@@ -1,0 +1,29 @@
+%%%%%%%%%%%%%%%%%%%%%%
+LAST UPDATE: 7/29/2012
+%%%%%%%%%%%%%%%%%%%%%%
+
+1. Use Test_IRLS to test the IRLS_q code with randomly generated data or
+user-input data.
+
+2. Use Test_sIRLS to test the sIRLS_q code for randomly generated data or
+user-input data.
+
+3. For Randomly generated data :
+   The possible options for problem set-up are given in 'Probinstances.m'.
+   You will choose from these options when Test_IRLS or Test_sIRLS is run.
+   The problem instances are classified as easy or hard based on
+   the # samples available and the degrees of freedom in the matrix.
+   
+   Some notation used in 'Probinstances.m':
+   p: #Measurements or #entries of the matrix that is known. Note p < nxn.
+   sr: Sampling ratio = p/(nxn).
+   fr: Degrees of freedom ratio.
+   
+
+4. For user-input data: 
+
+    Create a input data matrix M.mat which has the following format:
+    "The matrix M.mat has 3 columns. The first two columns denote the row-index and column-index.
+     The last column has the values of matrix M at the row-column indices specified in the first two columns." 
+    The matrix M represents an incomplete matrix that would be completed by the algorithm.
+

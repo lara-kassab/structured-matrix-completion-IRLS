@@ -17,12 +17,11 @@ if type == 2
         incr = 50;
     else
         eta = 1.03;
-        niter = 5000; %5000;
+        niter = 6000; %5000;
         svditer = 50;
         incr = 100;
     end;
 end;
     
 gam0 = 1e-2; gammin = 1e-10; %Choose the gamma parameters - Initial and final.
-tol = 1e-5; 
-
+tol = 1e-3; % Tolerance for convergence

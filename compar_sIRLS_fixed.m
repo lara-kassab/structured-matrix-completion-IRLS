@@ -79,6 +79,7 @@ for k = 1 : numMat
     
     % Construct M for sIRLS
     M = [Obs_i, Obs_j, Y(sub2ind(size(Y), Obs_i, Obs_j))];
+    save('M.mat', 'M')
     
     % Find the error using sIRLS-1
     error_sIRLS = error_sIRLS + run_sIRLS(1,q,p,Y,M,m,n,r,Spar,type);

@@ -10,7 +10,7 @@ m = 30; n = 30;
 samp = 0.6;
 
 % Rate of missing entries being 0
-zero_rate = 0.6;
+zero_rate = 0.9;
 
 % Rank guess
 r = 7;

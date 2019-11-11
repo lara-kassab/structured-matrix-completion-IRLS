@@ -45,9 +45,9 @@ end;
 end;
 
 if type == 2
-if(exist('M.mat') == 0)
-    return;
-end;
+%if(exist('M.mat') == 0)
+%    return;
+%end;
 end;
 
 while(nrg <= 0 || abs(nrg - floor(nrg)) > 0)

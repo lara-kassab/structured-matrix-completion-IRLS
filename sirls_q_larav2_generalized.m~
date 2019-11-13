@@ -1,13 +1,15 @@
-%% -------------- Structured IRLS-p,q (0 <= p,q <= 1) algorithm -------------------- %
+%% -------------- sIRLS-q (0 <= p <= 1) algorithm -------------------- %
 
 %% ----- This is the code associated with the paper:
-% ----- "Low-rank Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
-% ----- Henry Adams (email), Lara Kassab (email), and Deanna Needell (email)
+% ----- "Iterative Reweighted Algorithms for Matrix Rank Minimization"
+% ----- Karthik Mohan (karna@uw.edu) and Maryam Fazel (mfazel@uw.edu).
 
-% -------------- LAST UPDATE: 11/13/2019 ------------------------------ %
+% -------------- LAST UPDATE: 8/28/2012 ------------------------------ %
 
 
 function [NS, avgerr,avgiterno, TT,timeperiter, TTcpu,Xnew] = sirls_q_larav2_generalized(m,n,sr,r,rmax,rknown,eta,gam0,gammin,q,p,tol,nrg,niter,svditer,incr,type,M,Spar)
+
+
 
 
 %% PARAMETERS
@@ -23,6 +25,9 @@ err = 0; avgerr = 0; avgiterno = 0;
 
 if(type == 2)
     
+    
+else %IF TYPE = 2
+    
     B = zeros(m,n);
     Mask = zeros(m,n);
     
@@ -32,10 +37,10 @@ if(type == 2)
     end
     
     alpt = M(:,1); betat = M(:,2);
+    %gam = gam0*norm(B);
+    gam = 2;
+ 
     [mis_i,mis_j] = find(Mask == 0);
-    
-    % Initialization of regularizers
-    gam = 2; eps = 1;
     
     %FIRST ITERATION OF sIRLS
     k = 1;
@@ -50,7 +55,7 @@ if(type == 2)
     fprintf('\n');
     
     N = size(mis_i,1);
-    h = ones(N,1);
+    eps = 1; h = ones(N,1);
     
     while(k<1000) %%%%%%%%%%%%%%%%%%%%%%% niter
         p = 1; k_sparsity = 2;
@@ -72,7 +77,7 @@ if(type == 2)
         % Estimating rank to truncate SVD in next iteration
         if(rknown == 1)
             count = r;
-        end
+        end;
         
         % Promote low-rankness
         [Xnew,err,terr,l] = grad_proj(B,L,Xnew,V,D1,m,n,alpt,betat,11);
@@ -107,9 +112,9 @@ if(type == 2)
             fprintf('.');
             if(err < tol) 
                 break;
-            end
-        end
-    end
+            end;
+        end;
+    end; 
     
     TT = cputime - tstart;
     TTcpu = TT;
@@ -117,6 +122,23 @@ if(type == 2)
     avgiterno = k;
     timeperiter = TT/avgiterno;
     NS = 1;
+    
+end;
+
+if(type == 1)
+    if(NS > 0)
+        TTcpu = TTcpu/NS;
+        TT = TT/NS;
+        avgerr = avgerr/NS;
+        avgiterno = avgiterno/NS;
+        timeperiter = TT/avgiterno;
+    else
+        TTcpu = cputime - tstart;
+        TT = etime(clock,startclock);
+        avgerr = err;
+        avgiterno = k;
+        timeperiter = TT/avgiterno;
+    end
     
 end
 end

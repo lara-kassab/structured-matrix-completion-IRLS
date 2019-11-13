@@ -4,7 +4,7 @@ format compact;  format long e;
 tic
 
 % Dimension (m x n) of matrices to be considered
-m = 30; n = 30;
+m = 500; n = 500;
 
 % Pick a sampling rate
 samp = 0.6;
@@ -13,7 +13,7 @@ samp = 0.6;
 zero_rate = 0.9;
 
 % Rank guess
-r = 7;
+r = 10;
 
 % sIRLS parameters
 type = 2;

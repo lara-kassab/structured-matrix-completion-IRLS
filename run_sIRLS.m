@@ -95,9 +95,7 @@ if alg == 1
 end
 
 if alg == 2
-    [NS, avgerr,avgiterno, TT,timeperiter, TTcpu,Xalgo] = sirls_q_larav2_generalized(m,n,sr,r,rmax,rknown,eta,gam0,gammin,q,p_spar,tol,nrg,niter,svditer,incr,type,M,Spar);
-    %[NS, avgerr,avgiterno, TT,timeperiter, TTcpu,Xalgo] = sirls_q_larav2(m,n,sr,r,rmax,rknown,eta,gam0,gammin,q,p_spar,tol,nrg,niter,svditer,incr,type,M,Spar);
-    %[NS, avgerr,avgiterno, TT,timeperiter, TTcpu,Xalgo] = sirls_q_larav3(m,n,sr,r,rmax,rknown,eta,gam0,gammin,q,tol,nrg,niter,svditer,incr,type,M,Spar);
+    [NS, avgerr,avgiterno, TT,timeperiter, TTcpu,Xalgo] = structured_sirls_pq(m,n,sr,r,rmax,rknown,eta,gam0,gammin,q,p_spar,tol,nrg,niter,svditer,incr,type,M,Spar);
     save('Xalgo.mat', 'Xalgo')
     rel_error_sIRLS = norm(Y - Xalgo, 'fro')/norm(Y, 'fro');
     

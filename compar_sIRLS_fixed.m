@@ -91,7 +91,4 @@ end
 avg_error_sIRLS = error_sIRLS/numMat;
 avg_error_Structured_sIRLS = error_Structured_sIRLS/numMat;
 
-%load('avg_k.mat'); load('temp1.mat'); load('temp2.mat')
-load('avgiterno.mat'); load('Xalgo.mat');
-
 toc

@@ -44,12 +44,6 @@ end;
 
 end;
 
-if type == 2
-%if(exist('M.mat') == 0)
-%    return;
-%end;
-end;
-
 while(nrg <= 0 || abs(nrg - floor(nrg)) > 0)
     fprintf('\n The number of random generations has to be positive integer\n');
     nrg = input('\n Enter an integer greater than 0:  ');
@@ -96,7 +90,6 @@ end
 
 if alg == 2
     [NS, avgerr,avgiterno, TT,timeperiter, TTcpu,Xalgo] = structured_sirls_pq(m,n,sr,r,rmax,rknown,eta,gam0,gammin,q,p_spar,tol,nrg,niter,svditer,incr,type,M,Spar);
-    save('Xalgo.mat', 'Xalgo')
     rel_error_sIRLS = norm(Y - Xalgo, 'fro')/norm(Y, 'fro');
     
 end

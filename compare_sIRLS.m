@@ -13,7 +13,7 @@ r2 = size(rate2_vector,2);
 
 % Number of matrices considered
 Matrices = [];
-m = 500; n = 500;
+m = 100; n = 100;
 numMat = 10; % number of matrices
 r = 10; % rank of the matrices
 errorMatA = zeros(r1,r2); % errors of of sIRLS-1

@@ -98,8 +98,8 @@ xlabel('Sampling rate of zero entries', 'FontSize',16); ylabel('Sampling rate of
 colorbar
 
 %% Plot relative errors for each method
-errorMatA = errorMatA./50;
-errorMatB = errorMatB./50;
+errorMatA = errorMatA./numMat;
+errorMatB = errorMatB./numMat;
 
 eA = max(errorMatA(:));
 eB = max(errorMatB(:));

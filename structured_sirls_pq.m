@@ -6,7 +6,6 @@
 
 % -------------- LAST UPDATE: 11/20/2019 ------------------------------ %
 
-
 function [NS, avgerr,avgiterno, TT,timeperiter, TTcpu,Xnew] = structured_sirls_pq(m,n,r,rmax,rknown,q,p,tol,niter,incr,type,M)
 
 
@@ -42,7 +41,6 @@ if(type == 2)
     svditer =  niter; %Parameter in rand_svd
     count = countstart;
     L = 2; %Initial Lipschitz constant
-    V = 0; D1 = 0;
     extra_rank = 0;
     tstart = cputime;
     startclock = clock;
@@ -51,8 +49,8 @@ if(type == 2)
     N = size(mis_i,1);
     h = ones(N,1); % sparsity weights intialization
     
-    while(k<1000) %niter
-        k_sparsity = 2;
+    while(k<1000) %%%%%niter
+        k_sparsity = 2; % max number of gradient step iterations
         [Xnew,err,terr,l] = grad_proj_sparsity(Xnew,k_sparsity,mis_i,mis_j,h,N);
         
         % Update weights for low-rankness
@@ -78,25 +76,15 @@ if(type == 2)
         L = 2; %Lipschitz constant
         
         % Update epsilon (regularizer for sparsity weights)
-        v = Xnew(sub2ind(size(Xnew), mis_i, mis_j));
         eps = 0.9*eps;
-        eps = max(eps, 10^(-17)); %17/N
+        eps = max(eps, 10^(-17));
         
         % Update weights for sparsity
         v = Xnew(sub2ind(size(Xnew), mis_i, mis_j));
         for i = 1 : N
             h(i) = (v(i)^2 + eps).^((p/2)-1); 
         end
-        
-%         %THRESHOLD FOR SPARSITY %1e-8
-%         thresh = 1e-8; 
-%         
-%         for i = 1 : N
-%             if (abs(v(i)) < thresh)
-%                 v(i) = 0;
-%             end
-%         end
-        
+
         Xnew(sub2ind(size(Xnew), mis_i, mis_j)) = v;
         err = norm(Xnew - Xold,'fro')/norm(Xnew,'fro');
         Xold = Xnew;

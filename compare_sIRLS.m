@@ -75,10 +75,10 @@ for k = 1 : numMat
             M = [Obs_i, Obs_j, Y(sub2ind(size(Y), Obs_i, Obs_j))];
             
             % Find the error using sIRLS-1
-            errorMatA(i,j) = errorMatA(i,j) + run_sIRLS(1,q,p,Y,M,m,n,r,Spar,type);
+            errorMatA(i,j) = errorMatA(i,j) + run_sIRLS(1,q,p,Y,M,m,n,r,type);
             
             % Find the error using Structured sIRLS-1,1
-            errorMatB(i,j) = errorMatB(i,j) + run_sIRLS(2,q,p,Y,M,m,n,r,Spar,type);
+            errorMatB(i,j) = errorMatB(i,j) + run_sIRLS(2,q,p,Y,M,m,n,r,type);
             
         end
     end

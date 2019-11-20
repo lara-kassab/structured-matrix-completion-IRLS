@@ -81,10 +81,10 @@ for k = 1 : numMat
     M = [Obs_i, Obs_j, Y(sub2ind(size(Y), Obs_i, Obs_j))];
     
     % Find the error using sIRLS-1
-    error_sIRLS = error_sIRLS + run_sIRLS(1,q,p,Y,M,m,n,r,Spar,type);
+    error_sIRLS = error_sIRLS + run_sIRLS(1,q,p,Y,M,m,n,r,type);
     
     % Find the error using Structured sIRLS-1,1
-    error_Structured_sIRLS = error_Structured_sIRLS + run_sIRLS(2,q,p,Y,M,m,n,r,Spar,type);
+    error_Structured_sIRLS = error_Structured_sIRLS + run_sIRLS(2,q,p,Y,M,m,n,r,type);
 
 end
 

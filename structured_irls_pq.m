@@ -4,10 +4,10 @@
 % ----- "Low-rank Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
 % ----- Henry Adams (email), Lara Kassab (email), and Deanna Needell (email)
 
-% -------------- LAST UPDATE: 11/20/2019 ------------------------------ %
+% -------------- LAST UPDATE: 11/13/2019 ------------------------------ %
 
 
-function [NS, avgerr,avgiterno, TT,timeperiter, TTcpu,Xnew] = structured_sirls_pq(m,n,r,rmax,rknown,q,p,tol,niter,incr,type,M)
+function [NS, avgerr,avgiterno, TT,timeperiter, TTcpu,Xnew] = structured_irls_pq(m,n,sr,r,rmax,rknown,eta,gam0,gammin,q,p,tol,nrg,niter,svditer,incr,type,M,Spar)
 
 
 %% PARAMETERS

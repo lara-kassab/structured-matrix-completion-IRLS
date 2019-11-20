@@ -59,10 +59,9 @@ if(type == 2)
         [U,S,V] = rand_svd(Xnew,count,k,svditer,incr);
         s = diag(S);
         
-        % Update the regularizer gamma
+        % Update the regularizer gamma (for low-rank promoting weights)
         gam = .5*gam;
-        gam = max(gam, 10^(-17));
-        
+        gam = max(gam, 10^(-17)); 
         g = gam*ones(count,1); s = s(1:count,1);
         D1 = diag( (g.^(1 - q/2))./((s.*s + g).^(1 - q/2))- ones(count,1));
         V = V(:,1:count);
@@ -89,14 +88,14 @@ if(type == 2)
             h(i) = (v(i)^2 + eps).^((p/2)-1); 
         end
         
-        %THRESHOLD FOR SPARSITY %1e-8
-        thresh = 1e-8; 
-        
-        for i = 1 : N
-            if (abs(v(i)) < thresh)
-                v(i) = 0;
-            end
-        end
+%         %THRESHOLD FOR SPARSITY %1e-8
+%         thresh = 1e-8; 
+%         
+%         for i = 1 : N
+%             if (abs(v(i)) < thresh)
+%                 v(i) = 0;
+%             end
+%         end
         
         Xnew(sub2ind(size(Xnew), mis_i, mis_j)) = v;
         err = norm(Xnew - Xold,'fro')/norm(Xnew,'fro');

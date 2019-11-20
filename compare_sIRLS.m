@@ -19,6 +19,9 @@ r = 10; % rank of the matrices
 errorMatA = zeros(r1,r2); % errors of of sIRLS-1
 errorMatB = zeros(r1,r2); % errors of Structured sIRLS-1,1
 
+% Noise level
+eps_noise = 10^(-3);
+
 % sIRLS parameters
 type = 2;
 q = 1; p = 1;
@@ -66,10 +69,6 @@ for k = 1 : numMat
             Mask = zeros(m,n);
             Mask(sub2ind(size(Y), Obs_i, Obs_j)) = 1;
             [mis_i, mis_j] = find(Mask == 0);
-            
-            % Compute sparsity
-            Sparsity = find(Y(sub2ind(size(Y), mis_i, mis_j)));
-            Spar = size(Sparsity,1);
             
             % Construct M for sIRLS
             M = [Obs_i, Obs_j, Y(sub2ind(size(Y), Obs_i, Obs_j))];

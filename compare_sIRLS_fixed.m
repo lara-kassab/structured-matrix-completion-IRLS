@@ -15,6 +15,9 @@ zero_rate = 0.9;
 % Rank guess
 r = 10;
 
+% Noise level
+eps_noise = 10^(-3);
+
 % sIRLS parameters
 type = 2;
 q = 1; p = 1;
@@ -72,11 +75,7 @@ for k = 1 : numMat
     
     % Indices of missing entries
     [mis_i,mis_j] = find(Mask == 0);
-    
-    % Sparsity guess
-    Sparsity = find(Y(sub2ind(size(Y), mis_i, mis_j)));
-    Spar = size(Sparsity,1);
-    
+
     % Construct M for sIRLS
     M = [Obs_i, Obs_j, Y(sub2ind(size(Y), Obs_i, Obs_j))];
     

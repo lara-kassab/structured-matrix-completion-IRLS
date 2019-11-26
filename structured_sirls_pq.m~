@@ -1,10 +1,10 @@
 %% -------------- Structured IRLS-p,q (0 <= p,q <= 1) algorithm -------------------- %
 
-%% --- This is the code associated with the paper:
-% --- "Low-rank Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
-% --- Henry Adams(adams@math.colostate.edu), Lara Kassab(kassab@math.colostate.edu), and Deanna Needell(deanna@math.ucla.edu)
+%% ----- This is the code associated with the paper:
+% ----- "Low-rank Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
+% ----- Henry Adams(adams@math.colostate.edu), Lara Kassab (kassab@math.colostate.edu), and Deanna Needell (deanna@math.ucla.edu)
 
-% -------------- LAST UPDATE: 11/26/2019 -------------- %
+% -------------- LAST UPDATE: 11/20/2019 ------------------------------ %
 
 function [NS, avgerr,avgiterno, TT,timeperiter, TTcpu,Xnew] = structured_sirls_pq(m,n,r,rmax,rknown,q,p,tol,niter,incr,type,M)
 

@@ -1,4 +1,4 @@
-%% Produce the plots for the ratio of the average error and relative errors for sIRLS and Structured sIRLS
+%% Plot the relative average error between sIRLS and Structured sIRLS (gradient algorithm)
 close all;  clear all;
 format compact;  format long e;
 tic
@@ -17,6 +17,9 @@ numMat = 10; % number of matrices
 r = 10; % rank of the matrices
 errorMatA = zeros(r1,r2); % errors of of sIRLS-1
 errorMatB = zeros(r1,r2); % errors of Structured sIRLS-1,1
+
+% Noise level
+eps_noise = 10^(-3);
 
 % sIRLS parameters
 type = 2;
@@ -77,14 +80,14 @@ end
 relError =  errorMatB./errorMatA;
 toc
 
-%% Plot the matrix of ratio of the average errors
+%% Plot the matrix of relative average error
 figure;
 imagesc(rate2_vector, rate1_vector, flipud(relError))
 %caxis([0 mmax])
 set(gca, 'XTick', 0.1:0.1:1, 'XTickLabel', 0.1:0.1:1,'FontSize',14);
 set(gca, 'YTick', 0.1:0.1:1, 'YTickLabel', 1:-0.1:0.1, 'FontSize',14);
 xlabel('Sampling rate of zero entries', 'FontSize',16); ylabel('Sampling rate of non-zero entries', 'FontSize',16);
-%title('Average ratio error')
+%title('Relative average error')
 colorbar
 
 %% Plot relative errors for each method
@@ -98,7 +101,7 @@ emax = max(eA,eB);
 figure;
 imagesc(rate2_vector, rate1_vector, flipud(errorMatA))
 caxis([0 emax])
-set(gca, 'XTick', 0.1:0.1:1, 'XTickLabel', 0.1:0.1:1,'FontSize',14);
+set(gca, 'XTick', 0.1:0.1:1, 'XTickLabel', 0.1:0.1:1,'FontSize',14); 
 set(gca, 'YTick', 0.1:0.1:1, 'YTickLabel', 1:-0.1:0.1,'FontSize',14);
 xlabel('Sampling rate of zero entries', 'FontSize',16); ylabel('Sampling rate of non-zero entries', 'FontSize',16);
 %title('Relative average error of sIRLS')
@@ -107,7 +110,7 @@ colorbar
 figure;
 imagesc(rate2_vector, rate1_vector, flipud(errorMatB))
 caxis([0 emax])
-set(gca, 'XTick', 0.1:0.1:1, 'XTickLabel', 0.1:0.1:1,'FontSize',14);
+set(gca, 'XTick', 0.1:0.1:1, 'XTickLabel', 0.1:0.1:1,'FontSize',14); 
 set(gca, 'YTick', 0.1:0.1:1, 'YTickLabel', 1:-0.1:0.1,'FontSize',14);
 xlabel('Sampling rate of zero entries', 'FontSize',16); ylabel('Sampling rate of non-zero entries', 'FontSize',16);
 %title('Relative average error of Structured sIRLS')

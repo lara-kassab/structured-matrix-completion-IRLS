@@ -6,7 +6,7 @@
 
 % -------------- LAST UPDATE: 11/26/2019 -------------- %
 
-function [NS, avgerr,avgiterno, TT,timeperiter, TTcpu,Xnew] = structured_sirls_pq(m,n,r,rmax,rknown,q,p,tol,niter,incr,type,M)
+function [avgiterno, TT,timeperiter, TTcpu, Xnew] = structured_sirls_pq(m,n,r,rmax,rknown,q,p,tol,niter,incr,type,M)
 
 
 %% PARAMETERS
@@ -99,10 +99,8 @@ if(type == 2)
     
     TT = cputime - tstart;
     TTcpu = TT;
-    avgerr = err;
     avgiterno = k;
     timeperiter = TT/avgiterno;
-    NS = 1;
     
 end
 end

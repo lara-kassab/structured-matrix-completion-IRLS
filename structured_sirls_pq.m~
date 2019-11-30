@@ -19,7 +19,6 @@ end
 TT = 0;TTcpu = 0; NS = 0; % # succesful instances
 err = 0; avgerr = 0; avgiterno = 0;
 
-%% Algorithm
 
 B = zeros(m,n);
 Mask = zeros(m,n);

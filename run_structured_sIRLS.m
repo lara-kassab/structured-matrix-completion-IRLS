@@ -6,7 +6,7 @@
 
 % -------------- LAST UPDATE: 11/30/2019 -------------- %
 
-function [error_structured_sIRLS] = run_structured_sIRLS(q,p_spar,Y,M,m,n,r,type)
+function [error_structured_sIRLS] = run_structured_sIRLS(q,p_spar,Y,M,m,n,r)
 
 %% Check if the inputs q, p_spar are correct
 
@@ -53,7 +53,7 @@ fprintf('\n -------------------');
 fprintf('\n Algorithm begins...');
 fprintf('\n -------------------\n\n');
 
-[avgiterno, TT,timeperiter, TTcpu, Xalgo] = structured_sirls_pq(m,n,r,rmax,rknown,q,p_spar,tol,niter,incr,type,M);
+[avgiterno, TT,timeperiter, TTcpu, Xalgo] = structured_sirls_pq(m,n,r,rmax,rknown,q,p_spar,tol,niter,incr,M);
 error_structured_sIRLS = norm(Y - Xalgo, 'fro')/norm(Y, 'fro');
 
 

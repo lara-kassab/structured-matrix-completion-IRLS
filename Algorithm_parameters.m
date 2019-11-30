@@ -12,12 +12,12 @@ if type == 2
     fr = r*(2*n - r)/p;
     if(fr < 0.4)
         eta = 1.1;
-        niter = 600; %500;
+        niter = 500;
         svditer = 10;
         incr = 50;
     else
         eta = 1.03;
-        niter = 6000; %5000;
+        niter = 5000;
         svditer = 50;
         incr = 100;
     end;

@@ -71,7 +71,7 @@ for k = 1 : numMat
     error_sIRLS = error_sIRLS + run_sIRLS(1,q,p,Y,M,m,n,r,type);
     
     % Find the error using Structured sIRLS-1,1
-    error_Structured_sIRLS = error_Structured_sIRLS + run_sIRLS(2,q,p,Y,M,m,n,r,type);
+    error_Structured_sIRLS = error_Structured_sIRLS + run_structured_sIRLS(q,p,Y,M,m,n,r,type);
     
 end
 

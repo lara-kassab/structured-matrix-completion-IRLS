@@ -46,7 +46,7 @@ if alg == 1
 end
 
 if alg == 2
-    [NS, avgerr,avgiterno, TT,timeperiter, TTcpu,Xalgo] = structured_sirls_pq(m,n,r,rmax,rknown,q,p_spar,tol,niter,incr,type,M);
+    [NS, avgerr,avgiterno, TT,timeperiter, TTcpu, Xalgo] = structured_sirls_pq(m,n,r,rmax,rknown,q,p_spar,tol,niter,incr,type,M);
     rel_error_sIRLS = norm(Y - Xalgo, 'fro')/norm(Y, 'fro');
     
 end

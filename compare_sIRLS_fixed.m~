@@ -38,7 +38,6 @@ for k = 1 : numMat
     YR = sprand(r,n,0.5);
     Y = YL*YR;
     Y = full(Y)/norm(Y, 'fro');
-    Y_original = Y;
     
     [f,h,s] = find(Y);
     k1 = size(f,1); % number of non-zero entries in M
@@ -83,10 +82,10 @@ for k = 1 : numMat
     M = [Obs_i, Obs_j, Y(sub2ind(size(Y), Obs_i, Obs_j))];
     
     % Find the error using sIRLS-1
-    error_sIRLS = error_sIRLS + run_sIRLS_p(Y_original,M,m,n,r,type);
+    error_sIRLS = error_sIRLS + run_sIRLS_p(Y,M,m,n,r,type);
     
     % Find the error using Structured sIRLS-1,1
-    error_Structured_sIRLS = error_Structured_sIRLS + run_structured_sIRLS(q,p,Y_original,M,m,n,r);
+    error_Structured_sIRLS = error_Structured_sIRLS + run_structured_sIRLS(q,p,Y,M,m,n,r);
     
 end
 

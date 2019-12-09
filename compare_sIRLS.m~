@@ -128,23 +128,3 @@ xlabel('Sampling rate of zero entries', 'FontSize',16); ylabel('Sampling rate of
 %title('Relative average error of Structured sIRLS')
 colorbar
 
-% Plot binary results
-relError_scaled = relError;
-for i = 1 : r1
-    for j = 1 : r2
-        if(relError(i,j)>= 1)
-            relError_scaled(i,j) = 1;
-        else 
-            relError_scaled(i,j) = 0;
-        end
-    end
-end
-
-figure;
-imagesc(rate2_vector, rate1_vector, flipud(relError_scaled))
-colormap(gray); 
-set(gca, 'XTick', 0.1:0.1:1, 'XTickLabel', 0.1:0.1:1,'FontSize',14);
-set(gca, 'YTick', 0.1:0.1:1, 'YTickLabel', 1:-0.1:0.1, 'FontSize',14);
-xlabel('Sampling rate of zero entries', 'FontSize',18); ylabel('Sampling rate of non-zero entries', 'FontSize',18);
-
-

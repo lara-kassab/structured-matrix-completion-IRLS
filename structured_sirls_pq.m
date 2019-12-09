@@ -49,7 +49,7 @@ fprintf('\n');
 N = size(mis_i,1);
 h = ones(N,1); % sparsity weights intialization
 
-while(k<1000) %%%%%niter
+while(k<niter) 
     k_sparsity = 2; % max number of gradient step iterations
     [Xnew,err,terr,l] = grad_proj_sparsity(Xnew,k_sparsity,mis_i,mis_j,h,N);
     
@@ -71,7 +71,8 @@ while(k<1000) %%%%%niter
     end
     
     % Promote low-rankness
-    [Xnew,err,terr,l] = grad_proj(B,L,Xnew,V,D1,m,n,alpt,betat,11);
+    k_lowrank = 11;
+    [Xnew,err,terr,l] = grad_proj(B,L,Xnew,V,D1,m,n,alpt,betat,k_lowrank);
     
     L = 2; %Lipschitz constant
     

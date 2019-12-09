@@ -1,10 +1,10 @@
 %% ---- Set Parameters and Run Structured sIRLS ---------------- %%
 
 %% --- This is the code associated with the paper:
-% --- "Low-rank Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
+% --- "Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
 % --- Henry Adams(adams@math.colostate.edu), Lara Kassab(kassab@math.colostate.edu), and Deanna Needell(deanna@math.ucla.edu)
 
-% -------------- LAST UPDATE: 11/30/2019 -------------- %
+% -------------- LAST UPDATE: 12/9/2019 -------------- %
 
 function [error_structured_sIRLS] = run_structured_sIRLS(q,p_spar,Y,M,m,n,r)
 

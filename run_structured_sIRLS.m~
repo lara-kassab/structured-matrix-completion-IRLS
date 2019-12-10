@@ -14,7 +14,7 @@ sr = measurements/(m*n);
 numb_ms = measurements; % Number of Measurements
 
 rmax = ceil(n*(1 - sqrt(1 - sr)));
-fr = r*(2*n - r)/numb_ms; % degree of freedom ratio for square matrices
+fr = r*(2*n - r)/numb_ms;
 
 if(fr < 0.4)
     niter = 500; 

@@ -9,16 +9,13 @@
 function [avgiterno, TT,timeperiter, TTcpu, Xnew] = structured_sirls_pq(m,n,r,rmax,rknown,q,p,tol,niter,incr,M)
 
 
-%% PARAMETERS
+%% Set the rank
 
 if(rknown == 1)
     countstart = r; %-- r if rank known
 else
     countstart = rmax; %-- rmax if rank NOT known
 end
-
-TT = 0;TTcpu = 0;
-err = 0; avgerr = 0; avgiterno = 0;
 
 %% Algorithm
 

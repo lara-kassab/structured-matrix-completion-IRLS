@@ -2,16 +2,42 @@
 close all;  clear all;
 format compact;  format long e;
 
-% INPUTS
+%% ------------- INPUTS -------------
 m = 100; n = 100; % size of m-by-n matrices
 numMat = 10; % number of matrices to average over
 r = 10; % rank of the matrices
-q = 1; p = 1; % sIRLS parameters
+q = 1; % (Structured) sIRLS low-rankness parameter
+p = 1; % Structured sIRLS sparsity parameter
 
 % CHOOSE noise_exp = 0 to run exact recovery experiments
 % CHOOSE noise_exp = 1 to run experiments with noise
 noise_exp = 0;             
 eps_noise = 10^(-3); % set the noise parameter (or noise ratio)
+
+% CHOOSE 1 if the Algorithm is allowed to use the information on the rank of the true solution
+% CHOOSE 0 if the Algorithm is unware of the rank of the true solution
+rknown = 0;
+
+%% ------------- END OF INPUTS -------------
+
+% Check if the inputs q, p are between 0 and 1
+while(q < 0 || q > 1)
+    q = input('\n Enter a real number between 0 and 1:  ');
+end
+
+while(p < 0 || p > 1)
+    p = input('\n Enter a real number between 0 and 1:  ');
+end
+
+% Check if rknown equals 0 or 1 only
+while(rknown <0 || rknown > 1 || abs(rknown - floor(rknown)) > 0)
+    rknown = input('\n Enter either 0 or 1:  ');
+end
+
+% Check if noise_exp equals 0 or 1 only
+while(noise_exp < 0 || noise_exp > 1 || abs(noise_exp - floor(noise_exp)) > 0)
+    noise_exp = input('\n Enter either 0 or 1:  ');
+end
 
 % Range of the sampling rate of non-zero entries
 rate1_vector = 0.1:0.05:1;
@@ -80,7 +106,7 @@ for k = 1 : numMat
             errorMatA(i,j) = errorMatA(i,j) + run_sIRLS_p(Y_original,M,m,n,r,2);
             
             % Find the error using Structured sIRLS-q,p
-            errorMatB(i,j) = errorMatB(i,j) + run_structured_sIRLS(q,p,Y_original,M,m,n,r);
+            errorMatB(i,j) = errorMatB(i,j) + run_structured_sIRLS(q,p,Y_original,M,m,n,r,rknown);
             
         end
     end
@@ -140,6 +166,7 @@ imagesc(rate2_vector, rate1_vector, flipud(relError_scaled))
 colormap(gray); 
 set(gca, 'XTick', 0.1:0.1:1, 'XTickLabel', 0.1:0.1:1,'FontSize',14);
 set(gca, 'YTick', 0.1:0.1:1, 'YTickLabel', 1:-0.1:0.1, 'FontSize',14);
-xlabel('Sampling rate of zero entries', 'FontSize',18); ylabel('Sampling rate of non-zero entries', 'FontSize',18);
+xlabel('Sampling rate of zero entries', 'FontSize',18); 
+ylabel('Sampling rate of non-zero entries', 'FontSize',18);
 
 

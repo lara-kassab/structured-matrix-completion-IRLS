@@ -23,6 +23,8 @@ noise_exp = 0; % set equal to 0 to run exact recovery experiments
 % set equal to 1 to run experiments with noise
 eps_noise = 10^(-3); % set the noise parameter (or ratio)
 
+rknown = 1;
+
 % Number of matrices to be averaged
 numMat = 5;
 
@@ -86,7 +88,7 @@ for k = 1 : numMat
     error_sIRLS = error_sIRLS + run_sIRLS_p(Y_original,M,m,n,r,type);
     
     % Find the error using Structured sIRLS-1,1
-    error_Structured_sIRLS = error_Structured_sIRLS + run_structured_sIRLS(q,p,Y_original,M,m,n,r);
+    error_Structured_sIRLS = error_Structured_sIRLS + run_structured_sIRLS(q,p,Y_original,M,m,n,r,rknown);
     
 end
 

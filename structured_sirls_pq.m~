@@ -48,28 +48,29 @@ N = size(mis_i,1); % number of missing entries
 h = ones(N,1); % sparsity weights intialization
 
 while(k<niter) 
-    k_sparsity = 2; % maximum number of gradient steps
+    k_sparsity = 2; % max number of gradient step iterations
     [Xnew,err,terr,l] = grad_proj_sparsity(Xnew,k_sparsity,mis_i,mis_j,h,N); % promote sparsity
     
     % Update weights for low-rankness
     [U,S,V] = rand_svd(Xnew,count,k,svditer,incr);
     s = diag(S);
-    gam = .5*gam; % update the regularizer gamma
-    gam = max(gam, 10^(-17)); % make sure gamma is not too small (~0)
+    gam = .5*gam; % update the regularizer gamma (for low-rank promoting weights)
+    gam = max(gam, 10^(-17));
     g = gam*ones(count,1); s = s(1:count,1);
     D1 = diag( (g.^(1 - q/2))./((s.*s + g).^(1 - q/2))- ones(count,1));
     V = V(:,1:count);
     
+    count = min(size(find(s > max(s)*1e-2),1)+extra_rank,rmax);
     % Estimating rank to truncate SVD in next iteration
     if(rknown == 1)
         count = r;
-    else
-        count = min(size(find(s > max(s)*1e-2),1)+extra_rank,rmax);
     end
     
     % Promote low-rankness
-    k_lowrank = 11; % maximum number of gradient steps
-    [Xnew,err,terr,l] = grad_proj(B,L,Xnew,V,D1,m,n,alpt,betat,k_lowrank); %promote low-rankness
+    k_lowrank = 11;
+    [Xnew,err,terr,l] = grad_proj(B,L,Xnew,V,D1,m,n,alpt,betat,k_lowrank);
+    
+    L = 2; %Lipschitz constant
     
     % Update epsilon (regularizer for sparsity weights)
     eps = 0.9*eps;
@@ -80,8 +81,8 @@ while(k<niter)
     for i = 1 : N
         h(i) = (v(i)^2 + eps).^((p/2)-1);
     end
-    Xnew(sub2ind(size(Xnew), mis_i, mis_j)) = v;
     
+    Xnew(sub2ind(size(Xnew), mis_i, mis_j)) = v;
     err = norm(Xnew - Xold,'fro')/norm(Xnew,'fro');
     Xold = Xnew;
     k = k + 1;

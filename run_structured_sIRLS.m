@@ -4,7 +4,7 @@
 % --- "Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
 % --- Henry Adams(adams@math.colostate.edu), Lara Kassab(kassab@math.colostate.edu), and Deanna Needell(deanna@math.ucla.edu)
 
-% -------------- LAST UPDATE: 12/9/2019 -------------- %
+% -------------- LAST UPDATE: 12/10/2019 -------------- %
 
 function [error_structured_sIRLS] = run_structured_sIRLS(q,p,Y,M,m,n,r,rknown)
 

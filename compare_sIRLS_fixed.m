@@ -26,7 +26,7 @@ eps_noise = 10^(-3); % set the noise parameter (or ratio)
 rknown = 1;
 
 % Number of matrices to be averaged
-numMat = 5;
+numMat = 1;
 
 % Initialize relative errors
 error_Structured_sIRLS = 0;
@@ -85,7 +85,7 @@ for k = 1 : numMat
     M = [Obs_i, Obs_j, Y(sub2ind(size(Y), Obs_i, Obs_j))];
     
     % Find the error using sIRLS-1
-    error_sIRLS = error_sIRLS + run_sIRLS_p(Y_original,M,m,n,r,type);
+    error_sIRLS = error_sIRLS + run_sIRLS_p(q,Y_original,M,m,n,r,rknown,type);
     
     % Find the error using Structured sIRLS-1,1
     error_Structured_sIRLS = error_Structured_sIRLS + run_structured_sIRLS(q,p,Y_original,M,m,n,r,rknown);

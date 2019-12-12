@@ -6,7 +6,7 @@
 
 % ----- LAST UPDATE: 8/28/2012 --------------%
 
-function [error_sIRLS] = run_sIRLS_p(Y,M,m,n,r,type)
+function [error_sIRLS] = run_sIRLS_p(q,Y,M,m,n,r,rknown,type)
 
 
 %% PROBLEM SETUP
@@ -67,16 +67,10 @@ if(type == 2)
     [sr,p,rmax,fr,eta,niter,svditer,incr,gam0,gammin,tol] = Algorithm_parameters(n,r,non_zero,type);
 end;
 
-q = 1; %sIRLS-q: Choose a q between 0 and 1
-
 while(q < 0 || q > 1)
     q = input('\n Enter a real number between 0 and 1:  ');
 end;
 
-rknown = 1; % CHOOSE 1 if the Algorithm is allowed to use the
-            % information on the rank of the true solution.
-            % CHOOSE 2 if the Algorithm is unware of the 
-            % rank of the true solution.
 while(rknown <0 || rknown > 1 || abs(rknown - floor(rknown)) > 0)
     rknown = input('\n Enter either 0 or 1:  ');
 end;

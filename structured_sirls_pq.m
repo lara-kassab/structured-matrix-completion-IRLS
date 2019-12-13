@@ -92,7 +92,7 @@ while(k<niter)
         end
     end
 end
-
+tol
 TT = cputime - tstart;
 TTcpu = TT;
 avgiterno = k;

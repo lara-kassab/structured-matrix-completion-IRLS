@@ -56,8 +56,8 @@ for k = 1 : numMat
     % Construct a random matrix
     YL = sprand(m,r,0.3);
     YR = sprand(r,n,0.5);
-    Y = YL*YR;
-    Y = full(Y)/norm(Y, 'fro');
+    Y = YL*YR; Y = full(Y);
+    Y = full(Y)/norm(Y);
     Y_original = Y;
     
     for i = 1 : r1

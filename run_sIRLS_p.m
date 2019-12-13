@@ -79,7 +79,7 @@ end;
 fprintf('\n -------------------');
 fprintf('\n Algorithm begins...');
 fprintf('\n -------------------\n\n');
-[NS, avgerr,avgiterno, TT,timeperiter, TTcpu,Xalgo] = sirls_q(m,n,sr,r,rmax,rknown,eta,gam0,gammin,q,tol,nrg,niter,svditer,incr,type,M);
+[NS, avgerr,avgiterno, TT,timeperiter, TTcpu, Xalgo] = sirls_q(m,n,sr,r,rmax,rknown,eta,gam0,gammin,q,tol,nrg,niter,svditer,incr,type,M);
 error_sIRLS = norm(Y - Xalgo, 'fro')/norm(Y, 'fro');
 
 %% ----------- OUTPUT ---------------------- %%

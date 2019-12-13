@@ -8,7 +8,7 @@
 
 %% CHOOSE DATA TYPE - SYNTHETIC DATA OR USER-INPUT DATA
 
-type = 1; % CHOOSE 1 for testing on synthetic data.
+type = 2; % CHOOSE 1 for testing on synthetic data.
           % CHOOSE 2 if you have your own data.
           
           

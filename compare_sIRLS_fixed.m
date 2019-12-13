@@ -6,7 +6,7 @@ format compact;  format long e;
 m = 500; n = 500;
 
 % Pick a fixed sampling rate
-samp = 0.6;
+samp = 0.5;
 
 % Pick a fixed zero sampling rate
 zero_rate = 0.9;
@@ -26,7 +26,7 @@ eps_noise = 10^(-3); % set the noise parameter (or ratio)
 rknown = 1;
 
 % Number of matrices to be averaged
-numMat = 1;
+numMat = 10;
 
 % Initialize relative errors
 error_Structured_sIRLS = 0;
@@ -38,8 +38,8 @@ for k = 1 : numMat
     % Construct a random matrix
     YL = sprand(m,r,0.3);
     YR = sprand(r,n,0.5);
-    Y = YL*YR;
-    Y = full(Y)/norm(Y, 'fro');
+    Y = YL*YR; Y = full(Y);
+    Y = full(Y)/norm(Y,'fro');
     Y_original = Y;
     
     [f,h,s] = find(Y);

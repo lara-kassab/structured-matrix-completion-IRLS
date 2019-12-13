@@ -7,7 +7,7 @@
 % -------------- LAST UPDATE: 8/28/2012 ------------------------------ %
 
 
-function [NS, avgerr,avgiterno, TT,timeperiter, TTcpu,Xnew] = sirls_q(m,n,sr,r,rmax,rknown,eta,gam0,gammin,q,tol,nrg,niter,svditer,incr,type,M)
+function [NS, avgerr,avgiterno, TT,timeperiter, TTcpu, Xnew] = sirls_q(m,n,sr,r,rmax,rknown,eta,gam0,gammin,q,tol,nrg,niter,svditer,incr,type,M)
 
 
 

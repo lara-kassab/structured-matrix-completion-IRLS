@@ -3,7 +3,7 @@ close all;  clear all;
 format compact;  format long e;
 
 % Dimension (m x n) of matrices to be considered
-m = 40; n = 40;
+m = 1000; n = 1000;
 
 % Pick a fixed sampling rate
 samp = 0.5;
@@ -12,7 +12,7 @@ samp = 0.5;
 zero_rate = 0.9;
 
 % Rank guess
-r = 9;
+r = 10;
 
 % sIRLS parameters
 type = 2;
@@ -26,7 +26,7 @@ eps_noise = 10^(-3); % set the noise parameter (or ratio)
 rknown = 1;
 
 % Number of matrices to be averaged
-numMat = 10;
+numMat = 1;
 
 % Initialize relative errors
 error_Structured_sIRLS = 0;

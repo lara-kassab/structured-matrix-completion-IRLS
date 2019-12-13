@@ -90,8 +90,8 @@ while(k<niter)
     end
 end
 
-TT = etime(clock,startclock);
-TTcpu = cputime - tstart;
+TT = cputime - tstart;
+TTcpu = TT;
 avgiterno = k;
 timeperiter = TT/avgiterno;
 

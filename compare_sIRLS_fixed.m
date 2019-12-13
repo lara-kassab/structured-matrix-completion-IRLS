@@ -3,7 +3,7 @@ close all;  clear all;
 format compact;  format long e;
 
 % Dimension (m x n) of matrices to be considered
-m = 500; n = 500;
+m = 40; n = 40;
 
 % Pick a fixed sampling rate
 samp = 0.5;
@@ -12,7 +12,7 @@ samp = 0.5;
 zero_rate = 0.9;
 
 % Rank guess
-r = 10;
+r = 9;
 
 % sIRLS parameters
 type = 2;
@@ -85,10 +85,10 @@ for k = 1 : numMat
     M = [Obs_i, Obs_j, Y(sub2ind(size(Y), Obs_i, Obs_j))];
     
     % Find the error using sIRLS-1
-    error_sIRLS = error_sIRLS + run_sIRLS_p(q,Y_original,M,m,n,r,rknown,type);
+    error_sIRLS = error_sIRLS + run_sIRLS_q(q,Y_original,M,m,n,r,rknown,type);
     
     % Find the error using Structured sIRLS-1,1
-    error_Structured_sIRLS = error_Structured_sIRLS + run_structured_sIRLS(q,p,Y_original,M,m,n,r,rknown);
+    error_Structured_sIRLS = error_Structured_sIRLS + run_structured_sIRLS(q,p,Y_original,M,m,n,r,rknown,mis_i,mis_j);
     
 end
 

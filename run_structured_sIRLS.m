@@ -4,9 +4,9 @@
 % --- "Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
 % --- Henry Adams(adams@math.colostate.edu), Lara Kassab(kassab@math.colostate.edu), and Deanna Needell(deanna@math.ucla.edu)
 
-% -------------- LAST UPDATE: 12/10/2019 -------------- %
+% -------------- LAST UPDATE: 12/13/2019 -------------- %
 
-function [error_structured_sIRLS] = run_structured_sIRLS(q,p,Y,M,m,n,r,rknown)
+function [error_structured_sIRLS] = run_structured_sIRLS(q,p,Y,M,m,n,r,rknown, mis_i,mis_j)
 
 % Choose remaining parameters
 measurements = size(M,1);
@@ -32,7 +32,7 @@ fprintf('\n -------------------');
 fprintf('\n Algorithm begins...');
 fprintf('\n -------------------\n\n');
 
-[avgiterno, TT,timeperiter, TTcpu, Xalgo] = structured_sirls_pq(m,n,r,rmax,rknown,q,p,tol,niter,incr,M);
+[avgiterno, TT,timeperiter, TTcpu, Xalgo] = structured_sirls_pq(m,n,r,rmax,rknown,q,p,tol,niter,incr,M, mis_i, mis_j);
 error_structured_sIRLS = norm(Y - Xalgo, 'fro')/norm(Y, 'fro');
 
 

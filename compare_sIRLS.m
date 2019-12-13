@@ -1,4 +1,12 @@
-%% This code compares sIRLS and Structured sIRLS on different structured settings and produces plots for relevant errors
+%% This code compares sIRLS and Structured sIRLS on different structured settings 
+%% and produces plots for errors
+
+%% --- This is the code associated with the paper:
+% --- "Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
+% --- Henry Adams(adams@math.colostate.edu), Lara Kassab(kassab@math.colostate.edu), and Deanna Needell(deanna@math.ucla.edu)
+
+% -------------- LAST UPDATE: 12/13/2019 -------------- %
+
 close all;  clear all;
 format compact;  format long e;
 
@@ -47,17 +55,17 @@ r1 = size(rate1_vector,2);
 rate2_vector = 0.1:0.05:1;
 r2 = size(rate2_vector,2);
 
-errorMatA = zeros(r1,r2); % errors of of sIRLS-1
-errorMatB = zeros(r1,r2); % errors of Structured sIRLS-1,1
+errorMatA = zeros(r1,r2); % errors of of sIRLS-q,p
+errorMatB = zeros(r1,r2); % errors of Structured sIRLS-q,p
 
-%% Matrix Completion using both methods
+%% ------------- Matrix Completion using both methods ------------- 
 for k = 1 : numMat
     
     % Construct a random matrix
     YL = sprand(m,r,0.3);
     YR = sprand(r,n,0.5);
     Y = YL*YR; Y = full(Y);
-    Y = full(Y)/norm(Y);
+    Y = full(Y)/norm(Y); 
     Y_original = Y;
     
     for i = 1 : r1
@@ -103,17 +111,17 @@ for k = 1 : numMat
             M = [Obs_i, Obs_j, Y(sub2ind(size(Y), Obs_i, Obs_j))];
             
             % Find the error using sIRLS-p
-            errorMatA(i,j) = errorMatA(i,j) + run_sIRLS_p(q,Y_original,M,m,n,r,rknown,2);
+            errorMatA(i,j) = errorMatA(i,j) + run_sIRLS_q(q,Y_original,M,m,n,r,rknown,2);
             
             % Find the error using Structured sIRLS-q,p
-            errorMatB(i,j) = errorMatB(i,j) + run_structured_sIRLS(q,p,Y_original,M,m,n,r,rknown);
+            errorMatB(i,j) = errorMatB(i,j) + run_structured_sIRLS(q,p,Y_original,M,m,n,r,rknown, mis_i, mis_j);
             
         end
     end
 end
 
-
-%% Plot for the ratio betwewn the average error of the two methods
+%% ------------- FIGURES -------------
+% Plot for the ratio between the average error of the two methods
 relError =  errorMatB./errorMatA; % ratio of the relative errors between the two methods
 
 figure;
@@ -123,7 +131,7 @@ set(gca, 'YTick', 0.1:0.1:1, 'YTickLabel', 1:-0.1:0.1, 'FontSize',14);
 xlabel('Sampling rate of zero entries', 'FontSize',18); ylabel('Sampling rate of non-zero entries', 'FontSize',18);
 colorbar
 
-%% Plot relative errors for each method
+% Plot relative errors for each method
 errorMatA = errorMatA./numMat;
 errorMatB = errorMatB./numMat;
 
@@ -169,4 +177,4 @@ set(gca, 'YTick', 0.1:0.1:1, 'YTickLabel', 1:-0.1:0.1, 'FontSize',14);
 xlabel('Sampling rate of zero entries', 'FontSize',18); 
 ylabel('Sampling rate of non-zero entries', 'FontSize',18);
 
-
+%% ------------- END OF FIGURES -------------

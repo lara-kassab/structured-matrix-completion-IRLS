@@ -4,9 +4,9 @@
 % --- "Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
 % --- Henry Adams(adams@math.colostate.edu), Lara Kassab(kassab@math.colostate.edu), and Deanna Needell(deanna@math.ucla.edu)
 
-% -------------- LAST UPDATE: 12/10/2019 -------------- %
+% -------------- LAST UPDATE: 12/13/2019 -------------- %
 
-function [avgiterno, TT,timeperiter, TTcpu, Xnew] = structured_sirls_pq(m,n,r,rmax,rknown,q,p,tol,niter,incr,M)
+function [avgiterno, TT,timeperiter, TTcpu, Xnew] = structured_sirls_pq(m,n,r,rmax,rknown,q,p,tol,niter,incr,M, mis_i, mis_j)
 
 
 %% Set the rank
@@ -20,15 +20,12 @@ end
 %% Algorithm
 
 B = zeros(m,n);
-Mask = zeros(m,n);
 
 for i = 1:size(M,1)
-    B(M(i,1),M(i,2)) = M(i,3);
-    Mask(M(i,1),M(i,2)) = 1;
+    B(M(i,1),M(i,2)) = M(i,3); % initialize missing entries with zeros
 end
 
 alpt = M(:,1); betat = M(:,2); % find the indices of the observed entries
-[mis_i,mis_j] = find(Mask == 0); % find the indices of the missing entries
 
 % Initialization of regularizers for weights
 gam = 2; eps = 1;
@@ -48,8 +45,8 @@ N = size(mis_i,1); % number of missing entries
 h = ones(N,1); % sparsity weights intialization
 
 while(k<niter) 
-    k_sparsity = 2; % maximum number of gradient steps
-    [Xnew,err,terr,l] = grad_proj_sparsity(Xnew,k_sparsity,mis_i,mis_j,h,N); % promote sparsity
+    k_sparsity = 2; % maximum number of gradient steps to promote sparsity
+    [Xnew] = grad_proj_sparsity(Xnew,k_sparsity,mis_i,mis_j,h,N); % promote sparsity
     
     % Update weights for low-rankness
     [U,S,V] = rand_svd(Xnew,count,k,svditer,incr);
@@ -68,8 +65,8 @@ while(k<niter)
     end
     
     % Promote low-rankness
-    k_lowrank = 11; % maximum number of gradient steps
-    [Xnew,err,terr,l] = grad_proj(B,L,Xnew,V,D1,m,n,alpt,betat,k_lowrank); %promote low-rankness
+    k_lowrank = 11; % maximum number of gradient steps to promote low-rankness
+    [Xnew,err,terr,l] = grad_proj(B,L,Xnew,V,D1,m,n,alpt,betat,k_lowrank); % promote low-rankness
     
     % Update epsilon (regularizer for sparsity weights)
     eps = 0.9*eps;
@@ -92,7 +89,7 @@ while(k<niter)
         end
     end
 end
-tol
+
 TT = cputime - tstart;
 TTcpu = TT;
 avgiterno = k;

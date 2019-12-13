@@ -1,18 +1,17 @@
-function[Xnew,err,terr,k] =   grad_proj_sparsity(Xprev,kmax,mis_i,mis_j,h,N)
+function [Xnew] =   grad_proj_sparsity(Xprev,kmax,mis_i,mis_j,h,N)
 
 %% PARAMETERS
 
 Xnew = Xprev;
 tol = 1e-4; %TOLERANCE
 
+step2 = 10^(-6);
 k = 1; err = 10;
-terr = zeros(kmax,1);
 
 while(k < kmax && err > tol)
     
     % Reset values
     Xold = Xnew;
-    step2 = 10^(-6);
     v = Xnew(sub2ind(size(Xnew), mis_i, mis_j));
     
     % Gradient Step
@@ -25,7 +24,6 @@ while(k < kmax && err > tol)
     
     % Compute the Error
     err = norm(Xnew - Xold,'fro')/norm(Xold,'fro');
-    terr(k,1) = err;
     k = k + 1;
     
 end

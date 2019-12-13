@@ -11,9 +11,9 @@ close all;  clear all;
 format compact;  format long e;
 
 %% ------------- INPUTS -------------
-m = 100; n = 100; % size of m-by-n matrices
+m = 40; n = 40; % size of m-by-n matrices
 numMat = 10; % number of matrices to average over
-r = 10; % rank of the matrices
+r = 9; % rank of the matrices
 q = 1; % (Structured) sIRLS low-rankness parameter
 p = 1; % Structured sIRLS sparsity parameter
 

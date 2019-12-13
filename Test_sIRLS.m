@@ -75,7 +75,7 @@ if(type == 2)
     [sr,p,rmax,fr,eta,niter,svditer,incr,gam0,gammin,tol] = Algorithm_parameters(n,r,non_zero,type);
 end;
 
-q = 0; %sIRLS-q: Choose a q between 0 and 1
+q = 1; %sIRLS-q: Choose a q between 0 and 1
 
 while(q < 0 || q > 1)
     q = input('\n Enter a real number between 0 and 1:  ');

@@ -8,14 +8,14 @@
 
 %% CHOOSE DATA TYPE - SYNTHETIC DATA OR USER-INPUT DATA
 
-type = 2; % CHOOSE 1 for testing on synthetic data.
+type = 1; % CHOOSE 1 for testing on synthetic data.
           % CHOOSE 2 if you have your own data.
           
           
 % PROBLEM SET-UP FOR SYNTHETIC DATA
 
 if  type == 1
-h = 1; % CHOOSE 1 for EASY problem instances
+h = 2; % CHOOSE 1 for EASY problem instances
        % CHOOSE 2 FOR HARD problem instances
        
 ins = 1; % CHOOSE PROBLEM INSTANCE: ENTER an integer between 1 and 9

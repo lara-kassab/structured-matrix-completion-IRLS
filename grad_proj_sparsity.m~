@@ -9,7 +9,7 @@ function [Xnew] =   grad_proj_sparsity(Xprev,kmax,mis_i,mis_j,h,N)
 Xnew = Xprev;
 tol = 1e-4; %TOLERANCE
 
-step2 = 10^(-6); % step size
+step2 = 10^(-6); % 
 k = 1; err = 10;
 
 while(k < kmax && err > tol)

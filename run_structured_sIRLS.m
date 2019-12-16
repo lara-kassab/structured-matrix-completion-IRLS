@@ -2,7 +2,7 @@
 
 %% --- This is the code associated with the paper:
 % --- "Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
-% --- Lara Kassab(kassab@math.colostate.edu)
+% --- Code written by: Lara Kassab(kassab@math.colostate.edu)
 
 % -------------- LAST UPDATE: 12/13/2019 -------------- %
 
@@ -10,13 +10,13 @@ function [error_structured_sIRLS] = run_structured_sIRLS(q,p,Y,M,m,n,r,rknown, m
 
 % Choose remaining parameters
 measurements = size(M,1);
-sr = measurements/(m*n);
-numb_ms = measurements; % Number of Measurements
+sr = measurements/(m*n); % sampling ratio
+numb_ms = measurements; % number of Measurements
 
-rmax = ceil(n*(1 - sqrt(1 - sr)));
+rmax = ceil(n*(1 - sqrt(1 - sr))); % used if the rank of the matrix is unknown
 
-niter = 5000;
-incr = 100;
+niter = 5000; % max number of iterations to perfrom for Structured sIRLS
+incr = 100; % parameter in rand_svd
 tol = 1e-5; % Tolerance for convergence
 
 %% ----------- ALGORITHM BEGINS ------------ %%
@@ -25,8 +25,11 @@ fprintf('\n -------------------');
 fprintf('\n Algorithm begins...');
 fprintf('\n -------------------\n\n');
 
+% run Structured sIRLS algorithm
 [avgiterno, TT,timeperiter, TTcpu, Xalgo] = structured_sirls_pq(m,n,r,rmax,rknown,q,p,tol,niter,incr,M, mis_i, mis_j);
-error_structured_sIRLS = norm(Y - Xalgo, 'fro')/norm(Y, 'fro');
+
+% compute the error of Structured sIRLS
+error_structured_sIRLS = norm(Y - Xalgo, 'fro')/norm(Y, 'fro'); 
 
 
 %% ----------- OUTPUT ------------ %%

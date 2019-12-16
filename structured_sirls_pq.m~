@@ -50,8 +50,8 @@ while(k<niter)
     % Update weights for low-rankness
     [U,S,V] = rand_svd(Xnew,count,k,svditer,incr);
     s = diag(S);
-    gam = .5*gam; % update the regularizer for the weights
-    gam = max(gam, 10^(-17)); % make sure gamma is not too small (or close to zero)
+    gam = .5*gam; % update the regularizer gamma
+    gam = max(gam, 10^(-17)); % make sure gamma is not too small (~0)
     g = gam*ones(count,1); s = s(1:count,1);
     D1 = diag( (g.^(1 - q/2))./((s.*s + g).^(1 - q/2))- ones(count,1));
     V = V(:,1:count);
@@ -60,7 +60,7 @@ while(k<niter)
     if(rknown == 1)
         count = r;
     else
-        count = min(size(find(s > max(s)*1e-2),1)+extra_rank,rmax); %-- if rank NOT known
+        count = min(size(find(s > max(s)*1e-2),1)+extra_rank,rmax);
     end
     
     % Promote low-rankness
@@ -69,7 +69,7 @@ while(k<niter)
     
     % Update epsilon (regularizer for sparsity weights)
     eps = 0.9*eps;
-    eps = max(eps, 10^(-17)); % make sure epsilon is not too small (or close to zero)
+    eps = max(eps, 10^(-17));
     
     % Update weights for sparsity
     v = Xnew(sub2ind(size(Xnew), mis_i, mis_j));
@@ -78,10 +78,10 @@ while(k<niter)
     end
     Xnew(sub2ind(size(Xnew), mis_i, mis_j)) = v;
     
-    err = norm(Xnew - Xold,'fro')/norm(Xnew,'fro'); % compute distance between two consecutive iterations
+    err = norm(Xnew - Xold,'fro')/norm(Xnew,'fro');
     Xold = Xnew;
     k = k + 1;
-    if(mod(k,20) == 0) % check every 20 iterations if the distance is less than the tolerance
+    if(mod(k,20) == 0)
         fprintf('.');
         if(err < tol)
             break;

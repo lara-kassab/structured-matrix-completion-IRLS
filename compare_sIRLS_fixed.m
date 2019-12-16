@@ -39,7 +39,7 @@ for k = 1 : numMat
     YL = sprand(m,r,0.3);
     YR = sprand(r,n,0.5);
     Y = YL*YR; Y = full(Y);
-    Y = full(Y)/norm(Y,'fro');
+    Y = Y/norm(Y');
     Y_original = Y;
     
     [f,h,s] = find(Y);
@@ -75,9 +75,8 @@ for k = 1 : numMat
     % Perturbing the Obeserved Entry
     if noise_exp == 1
         N_noise = randn(size(Obs_i));
-        noise_ratio =  norm(Y(sub2ind(size(Y), Obs_i, Obs_j)),2)/norm(N_noise,2);
+        noise_ratio =  norm(Y(sub2ind(size(Y), Obs_i, Obs_j)),'fro')/norm(N_noise,'fro');
         Z_noise = eps_noise * noise_ratio* N_noise;
-        % noise_norm = norm(Z_noise,2);
         Y(sub2ind(size(Y), Obs_i, Obs_j)) = Y(sub2ind(size(Y), Obs_i, Obs_j)) + Z_noise;
     end
     

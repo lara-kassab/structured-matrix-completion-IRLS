@@ -22,7 +22,7 @@ eps_noise = 10^(-3); % set the noise parameter (or noise ratio)
 
 % CHOOSE 1 if the Algorithm is allowed to use the information on the rank of the true solution
 % CHOOSE 0 if the Algorithm is unware of the rank of the true solution
-rknown = 0;
+rknown = 1;
 
 %% ------------- END OF INPUTS -------------
 

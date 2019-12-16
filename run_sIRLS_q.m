@@ -6,7 +6,7 @@
 
 % ----- LAST UPDATE: 8/28/2012 --------------%
 
-function [error_sIRLS] = run_sIRLS_q(q,Y,M,m,n,r,rknown,type)
+function [error_sIRLS, Xalgo] = run_sIRLS_q(q,Y,M,m,n,r,rknown,type)
 
 
 %% PROBLEM SETUP

@@ -6,7 +6,7 @@
 
 % -------------- LAST UPDATE: 12/13/2019 -------------- %
 
-function [error_structured_sIRLS] = run_structured_sIRLS(q,p,Y,M,m,n,r,rknown, mis_i,mis_j)
+function [error_structured_sIRLS,Xalgo] = run_structured_sIRLS(q,p,Y,M,m,n,r,rknown, mis_i,mis_j)
 
 % Choose remaining parameters
 measurements = size(M,1);
@@ -37,5 +37,5 @@ error_structured_sIRLS = norm(Y - Xalgo, 'fro')/norm(Y, 'fro');
 fprintf('\n\n m = %d, n = %d, r = %d, measurements = %d, samp.ratio = %3.2f', m,n,r,numb_ms,sr);
 fprintf(' # Iters = %d, Clock time = %3.2f, \n Clock time/iter = %3.3f, Cpu time = %3.2f, relative err = %3.6e \n\n', avgiterno, TT,timeperiter, TTcpu, error_structured_sIRLS);
 
-fprintf('\n The completed matrix is given by Xalgo.mat ...\n');
+fprintf('\n The completed matrix is given by Xalgo_s.mat ...\n');
 end

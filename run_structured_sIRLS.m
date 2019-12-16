@@ -14,17 +14,10 @@ sr = measurements/(m*n);
 numb_ms = measurements; % Number of Measurements
 
 rmax = ceil(n*(1 - sqrt(1 - sr)));
-fr = r*(2*n - r)/numb_ms; % degree of freedom ratio for square matrices
 
-if(fr < 0.4)
-    niter = 500; 
-    incr = 50;
-else
-    niter = 5000;
-    incr = 100;
-end
-
-tol = 1e-3; % Tolerance for convergence
+niter = 5000;
+incr = 100;
+tol = 1e-5; % Tolerance for convergence
 
 %% ----------- ALGORITHM BEGINS ------------ %%
 
@@ -38,7 +31,7 @@ error_structured_sIRLS = norm(Y - Xalgo, 'fro')/norm(Y, 'fro');
 
 %% ----------- OUTPUT ------------ %%
 
-fprintf('\n\n m = %d, n = %d, r = %d, measurements = %d, samp.ratio = %3.2f, freedom = %3.2f \n', m,n,r,numb_ms,sr,fr);
+fprintf('\n\n m = %d, n = %d, r = %d, measurements = %d, samp.ratio = %3.2f', m,n,r,numb_ms,sr);
 fprintf(' # Iters = %d, Clock time = %3.2f, Clock time/iter = %3.3f, Cpu time = %3.2f, relative err = %3.6e \n\n\n', avgiterno, TT,timeperiter, TTcpu, error_structured_sIRLS);
 
 fprintf('\n The completed matrix is given by Xalgo.mat ...\n');

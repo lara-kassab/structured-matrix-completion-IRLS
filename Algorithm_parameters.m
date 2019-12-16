@@ -24,4 +24,4 @@ if type == 2
 end;
     
 gam0 = 1e-2; gammin = 1e-10; %Choose the gamma parameters - Initial and final.
-tol = 1e-3; % Tolerance for convergence
+tol = 1e-5; % Tolerance for convergence

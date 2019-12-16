@@ -3,7 +3,7 @@ close all;  clear all;
 format compact;  format long e;
 
 % Dimension (m x n) of matrices to be considered
-m = 40; n = 40;
+m = 500; n = 500;
 
 % Pick a fixed sampling rate
 samp = 0.6;
@@ -12,7 +12,7 @@ samp = 0.6;
 zero_rate = 0.9;
 
 % Rank guess
-r = 9;
+r = 10;
 
 % sIRLS parameters
 type = 2;

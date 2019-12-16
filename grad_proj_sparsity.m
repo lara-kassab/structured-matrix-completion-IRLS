@@ -1,3 +1,6 @@
+
+
+
 function [Xnew] =   grad_proj_sparsity(Xprev,kmax,mis_i,mis_j,h,N)
 
 %% PARAMETERS

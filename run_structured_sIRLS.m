@@ -2,7 +2,7 @@
 
 %% --- This is the code associated with the paper:
 % --- "Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
-% --- Henry Adams(adams@math.colostate.edu), Lara Kassab(kassab@math.colostate.edu), and Deanna Needell(deanna@math.ucla.edu)
+% --- Lara Kassab(kassab@math.colostate.edu)
 
 % -------------- LAST UPDATE: 12/13/2019 -------------- %
 
@@ -32,7 +32,7 @@ error_structured_sIRLS = norm(Y - Xalgo, 'fro')/norm(Y, 'fro');
 %% ----------- OUTPUT ------------ %%
 
 fprintf('\n\n m = %d, n = %d, r = %d, measurements = %d, samp.ratio = %3.2f', m,n,r,numb_ms,sr);
-fprintf(' # Iters = %d, Clock time = %3.2f, Clock time/iter = %3.3f, Cpu time = %3.2f, relative err = %3.6e \n\n\n', avgiterno, TT,timeperiter, TTcpu, error_structured_sIRLS);
+fprintf(' # Iters = %d, Clock time = %3.2f, \n Clock time/iter = %3.3f, Cpu time = %3.2f, relative err = %3.6e \n\n', avgiterno, TT,timeperiter, TTcpu, error_structured_sIRLS);
 
 fprintf('\n The completed matrix is given by Xalgo.mat ...\n');
 end

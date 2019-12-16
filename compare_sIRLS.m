@@ -3,8 +3,7 @@
 
 %% --- This is the code associated with the paper:
 % --- "Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
-% --- Henry Adams(adams@math.colostate.edu), Lara Kassab(kassab@math.colostate.edu), and Deanna Needell(deanna@math.ucla.edu)
-
+% --- Lara Kassab(kassab@math.colostate.edu)
 % -------------- LAST UPDATE: 12/13/2019 -------------- %
 
 close all;  clear all;

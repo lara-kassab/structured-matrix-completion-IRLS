@@ -61,6 +61,11 @@ if(exist('M.mat') == 0)
     return
 end
 
+if size(M,2) ~= 3
+    fprintf('Enter the matrix M in the right form.');
+    return
+end
+
 Y_original = zeros(m,n);
 for i = 1:size(M,1)
     Y_original(M(i,1),M(i,2)) = M(i,3); % initialize missing entries with zeros
@@ -80,6 +85,12 @@ if mask_extra == 1
     % Mask extra entires
     rands = round(size(mis_i,1)*mask_rate);
     obs_sparse = find(M(:,3)<max_val);
+    
+    if rands > size(obs_sparse,1)
+        fprintf('There is not enough entries under this value to sample');
+        return
+    end
+    
     idu_sparse = datasample(obs_sparse,rands,'Replace',false);
     M_masked = M(idu_sparse,3); % true values to compare to
     

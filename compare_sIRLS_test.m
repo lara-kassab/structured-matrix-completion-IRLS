@@ -10,7 +10,7 @@ format compact;  format long e;
 
 %% ------------- INPUTS -------------
 m = 500; n = 500; % size of m-by-n matrices
-numMat = 10; % number of matrices to average over
+numMat = 1; % number of matrices to average over
 r = 10; % guess of rank of the matrices
 q = 1; % sIRLS low-rankness parameter
 p = 1; % Structured sIRLS sparsity parameter

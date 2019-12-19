@@ -27,8 +27,7 @@ mask_extra = 1;
 if mask_extra == 1
     mask_rate = 10^(-3); % percent (in decimal form) of the missing entries to be masked
     max_val = 10^(-4); % upper bound on the value of extra entries to be masked
-    % max_val -- depends on the values of the data 
-    % -- it should not pick out only zeros nor non-spase vector of entires
+    % max_val -- depends on the values of the data (it should not pick out only zeros if present nor non-spase entires)
     % note -- the masked entries are not guaranteed to be sparse
 end
 

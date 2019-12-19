@@ -1,7 +1,7 @@
 %% This code compares sIRLS and Structured sIRLS on different structured settings
 
 %% --- This is the code associated with the paper:
-% --- "Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
+% --- "An Iterative Method for Structured Matrix Completion"
 % --- Code written by: Lara Kassab(kassab@math.colostate.edu)
 % -------------- LAST UPDATE: 12/13/2019 -------------- %
 
@@ -9,9 +9,9 @@ close all;  clear all;
 format compact;  format long e;
 
 %% ------------- INPUTS -------------
-m = 40; n = 40; % size of m-by-n matrices
+m = 500; n = 500; % size of m-by-n matrices
 numMat = 10; % number of matrices to average over
-r = 9; % guess of rank of the matrices
+r = 10; % guess of rank of the matrices
 q = 1; % sIRLS low-rankness parameter
 p = 1; % Structured sIRLS sparsity parameter
 

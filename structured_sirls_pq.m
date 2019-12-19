@@ -1,7 +1,7 @@
 %% -------------- Structured sIRLS-p,q (0 <= p,q <= 1) algorithm -------------------- %
 
 %% --- This is the code associated with the paper:
-% --- "Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
+% --- "An Iterative Method for Structured Matrix Completion"
 % --- Code written by: Lara Kassab(kassab@math.colostate.edu)
 
 % -------------- LAST UPDATE: 12/16/2019 -------------- %

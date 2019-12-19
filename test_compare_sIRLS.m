@@ -1,9 +1,9 @@
-%% This code compares sIRLS and Structured sIRLS on synthetic or use-inputted data
+%% This code compares sIRLS and Structured sIRLS on user-inputted data
 
 %% --- This is the code associated with the paper:
-% --- "Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
+% --- "An Iterative Method for Structured Matrix Completion"
 % --- Code written by: Lara Kassab(kassab@math.colostate.edu)
-% -------------- LAST UPDATE: 12/16/2019 -------------- %
+% -------------- LAST UPDATE: 12/19/2019 -------------- %
 
 close all;  clear all;
 format compact;  format long e;
@@ -53,7 +53,7 @@ Mask = zeros(m,n);
 for i = 1:size(M,1)
     Mask(M(i,1),M(i,2)) = 1;
 end
-[mis_i,mis_j] = find(Mask == 0); 
+[mis_i,mis_j] = find(Mask == 0);
 
 % Find the error using sIRLS-1
 [~, Xalgo] = run_sIRLS_q(q,Y_original,M,m,n,r,rknown,2);

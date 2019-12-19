@@ -1,7 +1,7 @@
 %% ---- Set Parameters and Run Structured sIRLS ---------------- %%
 
 %% --- This is the code associated with the paper:
-% --- "Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
+% --- "An Iterative Method for Structured Matrix Completion"
 % --- Code written by: Lara Kassab(kassab@math.colostate.edu)
 
 % -------------- LAST UPDATE: 12/13/2019 -------------- %

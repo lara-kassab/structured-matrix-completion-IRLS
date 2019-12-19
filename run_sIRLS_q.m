@@ -6,6 +6,9 @@
 
 % ----- LAST UPDATE: 8/28/2012 --------------%
 
+% ---- Edited by Lara Kassab for the paper "An Iterative Method for
+% Structured Matrix Completion" LAST UPDATE: 12/19/2019 -----%
+
 function [error_sIRLS, Xalgo] = run_sIRLS_q(q,Y,M,m,n,r,rknown,type)
 
 

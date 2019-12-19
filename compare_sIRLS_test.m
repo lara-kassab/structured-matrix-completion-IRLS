@@ -1,9 +1,9 @@
-%% This code compares sIRLS and Structured sIRLS on a user-inputed structured settings
+%% This code compares sIRLS and Structured sIRLS on structured synthetic data
 
 %% --- This is the code associated with the paper:
-% --- "Matrix Completion for Structured Observations Using Iteratively Reweighted Algorithms"
+% --- "An Iterative Method for Structured Matrix Completion"
 % --- Code written by: Lara Kassab(kassab@math.colostate.edu)
-% -------------- LAST UPDATE: 12/13/2019 -------------- %
+% -------------- LAST UPDATE: 12/19/2019 -------------- %
 
 close all;  clear all;
 format compact;  format long e;
@@ -15,8 +15,8 @@ r = 10; % guess of rank of the matrices
 q = 1; % sIRLS low-rankness parameter
 p = 1; % Structured sIRLS sparsity parameter
 
-rate1 = 0.9; % sampling rate of non-zero entries
-rate2 = 0.3; % sampling rate of zero entries
+rate1 = 0.7; % sampling rate of non-zero entries
+rate2 = 0.2; % sampling rate of zero entries (rate2 << rate1)
 
 % CHOOSE noise_exp = 0 to run exact recovery experiments
 % CHOOSE noise_exp = 1 to run experiments with noise
@@ -59,7 +59,7 @@ for k = 1 : numMat
     YL = sprand(m,r,0.3);
     YR = sprand(r,n,0.5);
     Y = YL*YR; Y = full(Y);
-    Y = Y/norm(Y');
+    Y = Y/norm(Y);
     Y_original = Y;
     
     % Subsmapling non-zero entries
@@ -96,11 +96,11 @@ for k = 1 : numMat
     % Construct M for sIRLS
     M = [Obs_i, Obs_j, Y(sub2ind(size(Y), Obs_i, Obs_j))];
     
-    % Find the error using sIRLS-1
+    % Find the error using sIRLS-q
     [err_sIRLS, Xalgo] = run_sIRLS_q(q,Y_original,M,m,n,r,rknown,2);
     error_sIRLS = error_sIRLS + err_sIRLS;
     
-    % Find the error using Structured sIRLS-1,1
+    % Find the error using Structured sIRLS-q,p
     [err_sIRLS_s, Xalgo_s] = run_structured_sIRLS(q,p,Y_original,M,m,n,r,rknown,mis_i,mis_j);
     error_Structured_sIRLS = error_Structured_sIRLS+err_sIRLS_s;
     

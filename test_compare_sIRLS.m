@@ -3,7 +3,11 @@
 %% --- This is the code associated with the paper:
 % --- "An Iterative Method for Structured Matrix Completion"
 % --- Code written by: Lara Kassab(kassab@math.colostate.edu)
+<<<<<<< Updated upstream
 % -------------- LAST UPDATE: 12/19/2019 -------------- %
+=======
+% -------------- LAST UPDATE: 12/20/2019 -------------- %
+>>>>>>> Stashed changes
 
 close all;  clear all;
 format compact;  format long e;

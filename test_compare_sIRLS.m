@@ -9,8 +9,8 @@ close all;  clear all;
 format compact;  format long e;
 
 %% ------------- INPUTS -------------
-m = 500; n = 500; % size of the m-by-n matrix with missing entries
 load('M.mat'); % load the matrix with missing entries in the special format
+m = 500; n = 500; % size of the m-by-n matrix with missing entries
 
 % CHOOSE 1 if the Algorithm is allowed to use the information on the rank of the true solution
 % CHOOSE 0 if the Algorithm is unware of the rank of the true solution
@@ -25,10 +25,10 @@ end
 mask_extra = 1;
 
 if mask_extra == 1
-    mask_rate = 10^(-3); % percent (in decimal form) of the missing entries to be masked
+    mask_rate = 10^(-3); % percent (in decimal form) of the observed entries to be masked
     max_val = 10^(-4); % upper bound on the value of extra entries to be masked
     % max_val -- depends on the values of the data 
-    % -- it should not pick out only zeros nor non-spase vector of entires
+    % -- it should not pick out an all zero or non-sparse vector
     % note -- the masked entries are not guaranteed to be sparse
 end
 
@@ -83,11 +83,11 @@ end
 
 if mask_extra == 1
     % Mask extra entires
-    rands = round(size(mis_i,1)*mask_rate);
+    rands = round(size(M,1)*mask_rate);
     obs_sparse = find(M(:,3)<max_val);
     
     if rands > size(obs_sparse,1)
-        fprintf('There is not enough entries under this value to sample');
+        fprintf('There is not %5.0f entries under %3.6e to sample.',rands, max_val);
         return
     end
     
@@ -104,17 +104,18 @@ if mask_extra == 1
     [mis_i,mis_j] = find(Mask == 0);
     
     for k = 1:size(idu_sparse,1)
-        id_s = idu_sparse(size(idu_sparse,1)+1-k);
+        idu_sparse = sort(idu_sparse,'descend');
+        id_s = idu_sparse(k);
         M(id_s,:) = [];
     end
 
 end
 
 % Find the error using sIRLS-1
-[~, Xalgo] = run_sIRLS_q(q,Y_original,M,m,n,r,rknown,2);
+[~, Xalgo] = run_sIRLS_q(q,Y_original,M,m,n,r,rknown,2,1);
 
 % Find the error using Structured sIRLS-1,1
-[~, Xalgo_s] = run_structured_sIRLS(q,p,Y_original,M,m,n,r,rknown,mis_i,mis_j);
+[~, Xalgo_s] = run_structured_sIRLS(q,p,Y_original,M,m,n,r,rknown,mis_i,mis_j,1);
 
 if mask_extra == 1
     % Find the recovered extra masked entries
@@ -132,11 +133,5 @@ if mask_extra == 1
 end
 
 fprintf('\n\n Number of masked entries = %3.0f', rands);
-fprintf('\n sIRLS error on masked entries = %3.6e, \n Average sIRLS error on masked entries = %3.6e \n', error, error_s);
-
-% Display error between consecutive approximations
-% Remove relative error in print
-
-%fprintf('\n\n sIRLS distance between consecutive iterations = %3.6e, \n Structured distance between consecutive iterations = %3.6e \n\n', error_sIRLS, error_Structured_sIRLS);
-
+fprintf('\n sIRLS error on masked entries = %3.6e, \n Structured sIRLS error on masked entries = %3.6e \n', error, error_s);
 

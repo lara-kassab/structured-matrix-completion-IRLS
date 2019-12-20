@@ -97,11 +97,11 @@ for k = 1 : numMat
     M = [Obs_i, Obs_j, Y(sub2ind(size(Y), Obs_i, Obs_j))];
     
     % Find the error using sIRLS-q
-    [err_sIRLS, Xalgo] = run_sIRLS_q(q,Y_original,M,m,n,r,rknown,2);
+    [err_sIRLS, Xalgo] = run_sIRLS_q(q,Y_original,M,m,n,r,rknown,2,0);
     error_sIRLS = error_sIRLS + err_sIRLS;
     
     % Find the error using Structured sIRLS-q,p
-    [err_sIRLS_s, Xalgo_s] = run_structured_sIRLS(q,p,Y_original,M,m,n,r,rknown,mis_i,mis_j);
+    [err_sIRLS_s, Xalgo_s] = run_structured_sIRLS(q,p,Y_original,M,m,n,r,rknown,mis_i,mis_j,0);
     error_Structured_sIRLS = error_Structured_sIRLS+err_sIRLS_s;
     
 end

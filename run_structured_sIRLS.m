@@ -33,7 +33,7 @@ error_structured_sIRLS = norm(Y - Xalgo, 'fro')/norm(Y, 'fro');
 
 
 %% ----------- OUTPUT ------------ %%
-if user == 1
+if user == 0
     fprintf('\n\n m = %d, n = %d, r = %d, measurements = %d, samp.ratio = %3.2f', m,n,r,numb_ms,sr);
     fprintf(' # Iters = %d, Clock time = %3.2f, \n Clock time/iter = %3.3f, Cpu time = %3.2f, relative err = %3.6e \n\n', avgiterno, TT,timeperiter, TTcpu, error_structured_sIRLS);
 else

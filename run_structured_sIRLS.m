@@ -42,4 +42,4 @@ else
     
 end
 
-    fprintf('\n The completed matrix is given by Xalgo_s.mat ...\n');
+    fprintf('\n The completed matrix using Structured sIRLS is given by Xalgo_s.mat ...\n');

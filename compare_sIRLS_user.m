@@ -9,7 +9,7 @@ close all;  clear all;
 format compact;  format long e;
 
 %% ------------- INPUTS -------------
-load('M.mat'); % load the matrix with missing entries in the special format
+load('M.mat'); % load the matrix with missing entries in the special format (see README.txt file)
 m = 500; n = 500; % size of the m-by-n matrix with missing entries
 r = 10; % guess of rank of the matrix
 

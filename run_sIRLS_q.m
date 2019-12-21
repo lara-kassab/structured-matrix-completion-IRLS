@@ -101,6 +101,6 @@ else
     end
 end;
 
-fprintf('\n The completed matrix is given by Xalgo.mat ...\n');
+fprintf('\n The completed matrix using sIRLS is given by Xalgo.mat ...\n');
 
 end

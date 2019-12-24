@@ -53,7 +53,7 @@ while(mask_extra <0 || mask_extra > 1 || abs(mask_extra - floor(mask_extra)) > 0
     mask_extra = input('\n Enter either 0 or 1:  ');
 end
 
-% Make sure if it is a user input data that M.mat exists
+% Make sure that M.mat exists
 if(exist('M.mat') == 0)
     return
 end

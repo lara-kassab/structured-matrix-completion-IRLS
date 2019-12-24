@@ -1,7 +1,7 @@
 Paper: “An Iterative Method for Structured Matrix Completion"
 by Henry Adams, Lara Kassab and Deanna Needell
 Code written by: Lara Kassab (kassab@math.colostate.edu)
-LAST UPDATE: 12/20/2019
+LAST UPDATE: 12/24/2019
 
 1. Use compare_sIRLS_synthetic.m to test sIRLS and Structured sIRLS on synthetically generated data.
 
@@ -12,4 +12,7 @@ LAST UPDATE: 12/20/2019
      The matrix M represents an incomplete matrix that would be completed by the algorithm.
      ii) Specify an estimate for the rank of the true matrix. 
 
-3. Use compare_sIRLS.m to produce the four plots displayed in the paper for synthetic data on different structured settings.
+
+[To reproduce the plots in the paper] 
+Use compare_sIRLS.m to produce the four plots displayed in the paper for synthetic data on different structured settings. The expected computation time depends on the data size, the difficulty of the completion problem and the number of matrices to average over.
+

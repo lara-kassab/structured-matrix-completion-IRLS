@@ -159,9 +159,9 @@ relError_scaled = relError;
 for i = 1 : r1
     for j = 1 : r2
         if(relError(i,j)>= 1)
-            relError_scaled(i,j) = 1;
-        else 
             relError_scaled(i,j) = 0;
+        else 
+            relError_scaled(i,j) = 1;
         end
     end
 end

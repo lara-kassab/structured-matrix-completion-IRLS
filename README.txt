@@ -7,9 +7,9 @@ LAST UPDATE: 12/29/2019
 
 
 [To run Structured sIRLS] 
-1. Use sIRLS_synthetic.m to run Structured sIRLS on synthetically generated data.
+1. Use structured_sIRLS_synthetic.m to run Structured sIRLS on synthetically generated data.
 
-2. Use sIRLS_user.m to run Structured sIRLS on user inputted data.
+2. Use structured_sIRLS_user.m to run Structured sIRLS on user inputted data.
      i) Create an input data matrix M.mat which has the following format:
     "The matrix M.mat has 3 columns. The first two columns denote the row-index and column-index.
      The last column has the values of matrix M at the row-column indices specified in the first two columns." 

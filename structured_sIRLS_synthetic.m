@@ -103,5 +103,5 @@ end
 
 avg_error_Structured_sIRLS = error_Structured_sIRLS/numMat;
 
-fprintf('\n\n Average Structured sIRLS error = %3.6e ', avg_error_Structured_sIRLS) 
+fprintf('\n\n\n\n Average Structured sIRLS error = %3.6e ', avg_error_Structured_sIRLS) 
 fprintf('over %3.0f runs. \n\n', numMat)

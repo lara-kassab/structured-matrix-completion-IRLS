@@ -3,7 +3,10 @@ by Henry Adams, Lara Kassab, and Deanna Needell
 Code written by: Lara Kassab (kassab@math.colostate.edu)
 LAST UPDATE: 12/29/2019
 
-In the implementation of our code, we use parts of the code corresponding to the paper "Iterative reweighted algorithms for matrix rank minimization" by Karthik Mohan and Maryam Fazel. Further, when comparing both algorithms we use the code fully. The code is found in the folders with the corresponding 'sIRLS_read_me.txt' file.
+In the implementation of our code, we use parts of the code corresponding to the paper 
+"Iterative reweighted algorithms for matrix rank minimization" by Karthik Mohan and Maryam Fazel. 
+Further, when comparing both algorithms we use the code fully. 
+The code is found in the folders with the corresponding 'sIRLS_read_me.txt' file.
 
 
 [To run Structured sIRLS] Folder: structured_sIRLS 
@@ -28,7 +31,11 @@ In the implementation of our code, we use parts of the code corresponding to the
      The matrix M represents an incomplete matrix that would be completed by the algorithm.
      ii) Specify an estimate for the rank of the true matrix. 
 
-3. Use compare_sIRLS.m to produce the four plots displayed in the paper for synthetic data on different structured settings. The expected computation time depends on the data size, the difficulty of the completion problem and the number of matrices to average over.
+3. Use compare_sIRLS.m to produce the four plots displayed in the paper for synthetic data 
+on different structured settings. The expected computation time depends on the data size, 
+the difficulty of the completion problem and the number of matrices to average over.
 
-See 'sIRLS_read_me.txt' file corresponding to the IRLS code of Karthik Mohan and Maryam Fazel corresponding to the paper "Iterative reweighted algorithms for matrix rank minimization". Journal of Machine Learning Research, 13 (Nov):3441–3473, 2012.
+See 'sIRLS_read_me.txt' file corresponding to the IRLS code of Karthik Mohan and Maryam Fazel 
+corresponding to the paper "Iterative reweighted algorithms for matrix rank minimization". Journal 
+of Machine Learning Research, 13 (Nov):3441–3473, 2012.
 

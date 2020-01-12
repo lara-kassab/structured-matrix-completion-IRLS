@@ -34,6 +34,8 @@ The code is found in the folders with the corresponding 'sIRLS_read_me.txt' file
 3. Use compare_sIRLS.m to produce the four plots displayed in the paper for synthetic data 
 on different structured settings. The expected computation time depends on the data size, 
 the difficulty of the completion problem and the number of matrices to average over.
+This is equivalent to running item #1 (19*19 cases)*(20 runs) = 7220 times, where item #1
+runs both algorithms.
 
 See 'sIRLS_read_me.txt' file corresponding to the IRLS code of Karthik Mohan and Maryam Fazel 
 corresponding to the paper "Iterative reweighted algorithms for matrix rank minimization". Journal 

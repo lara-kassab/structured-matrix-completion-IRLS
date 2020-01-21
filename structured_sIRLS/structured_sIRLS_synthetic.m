@@ -59,7 +59,6 @@ for k = 1 : numMat
     YR = sprand(r,n,0.5);
     Y = YL*YR; Y = full(Y);
     Y = Y/norm(Y);
-    Y_original = Y;
     
     % Subsmapling non-zero entries
     [f,h,s] = find(Y);
@@ -96,7 +95,7 @@ for k = 1 : numMat
     M = [Obs_i, Obs_j, Y(sub2ind(size(Y), Obs_i, Obs_j))];
     
     % Find the error using Structured sIRLS-q,p
-    [err_sIRLS_s, Xalgo_s] = run_structured_sIRLS(q,p,Y_original,M,m,n,r,rknown,mis_i,mis_j,0);
+    [err_sIRLS_s, Xalgo_s] = run_structured_sIRLS(q,p,Y,M,m,n,r,rknown,mis_i,mis_j,0);
     error_Structured_sIRLS = error_Structured_sIRLS+err_sIRLS_s;
     
 end

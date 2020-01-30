@@ -12,8 +12,8 @@ format compact;  format long e;
 m = 500; n = 500; % size of m-by-n matrices
 numMat = 10; % number of matrices to average over
 r = 10; % guess of rank of the matrices
-q = 1; % sIRLS low-rankness parameter
-p = 1; % Structured sIRLS sparsity parameter
+p = 1; % sIRLS low-rankness parameter
+q = 1; % Structured sIRLS sparsity parameter
 
 % CHOOSE noise_exp = 0 to run exact recovery experiments
 % CHOOSE noise_exp = 1 to run experiments with noise
@@ -27,12 +27,12 @@ rknown = 1;
 %% ------------- END OF INPUTS -------------
 
 % Check if the inputs q, p are between 0 and 1
-while(q < 0 || q > 1)
-    q = input('\n Enter a real number between 0 and 1:  ');
-end
-
 while(p < 0 || p > 1)
     p = input('\n Enter a real number between 0 and 1:  ');
+end
+
+while(q < 0 || q > 1)
+    q = input('\n Enter a real number between 0 and 1:  ');
 end
 
 % Check if rknown equals 0 or 1 only
@@ -107,10 +107,10 @@ for k = 1 : numMat
             M = [Obs_i, Obs_j, Y(sub2ind(size(Y), Obs_i, Obs_j))];
             
             % Find the error using sIRLS-p
-            errorMatA(i,j) = errorMatA(i,j) + run_sIRLS_q(q,Y,M,m,n,r,rknown,2,0);
+            errorMatA(i,j) = errorMatA(i,j) + run_sIRLS_p(p,Y,M,m,n,r,rknown,2,0);
             
             % Find the error using Structured sIRLS-q,p
-            errorMatB(i,j) = errorMatB(i,j) + run_structured_sIRLS(q,p,Y,M,m,n,r,rknown, mis_i, mis_j,0);
+            errorMatB(i,j) = errorMatB(i,j) + run_structured_sIRLS(p,q,Y,M,m,n,r,rknown, mis_i, mis_j,0);
             
             fprintf('\n\n Working with matrix number %2.1f, \n Sampling rate of nonzero entries = %2.2f, \n Sampling rate of zero entries = %2.2f \n\n', k, rate1, rate2);
             

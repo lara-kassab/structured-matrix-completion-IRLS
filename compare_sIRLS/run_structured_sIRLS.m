@@ -15,7 +15,7 @@ numb_ms = measurements; % number of Measurements
 
 rmax = ceil(n*(1 - sqrt(1 - sr))); % used if the rank of the matrix is unknown
 
-niter = 5000; % max number of iterations to perfrom for Structured sIRLS
+niter = 1000; % max number of iterations to perfrom for Structured sIRLS
 incr = 100; % parameter in rand_svd
 tol = 1e-5; % Tolerance for convergence
 

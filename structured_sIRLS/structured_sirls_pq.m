@@ -6,7 +6,7 @@
 
 % -------------- LAST UPDATE: 12/16/2019 -------------- %
 
-function [avgiterno, TT,timeperiter, TTcpu, Xnew] = structured_sirls_pq(m,n,r,rmax,rknown,q,p,tol,niter,incr,M, mis_i, mis_j)
+function [avgiterno, TT,timeperiter, TTcpu, Xnew] = structured_sirls_pq(m,n,r,rmax,rknown,p,q,tol,niter,incr,M, mis_i, mis_j)
 
 
 %% Set the rank
@@ -53,7 +53,7 @@ while(k<niter)
     gam = .5*gam; % update the regularizer for the weights
     gam = max(gam, 10^(-17)); % make sure gamma is not too small (or close to zero)
     g = gam*ones(count,1); s = s(1:count,1);
-    D1 = diag( (g.^(1 - q/2))./((s.*s + g).^(1 - q/2))- ones(count,1));
+    D1 = diag( (g.^(1 - p/2))./((s.*s + g).^(1 - p/2))- ones(count,1));
     V = V(:,1:count);
     
     % Estimating rank to truncate SVD in next iteration
@@ -74,7 +74,7 @@ while(k<niter)
     % Update weights for sparsity
     v = Xnew(sub2ind(size(Xnew), mis_i, mis_j));
     for i = 1 : N
-        h(i) = (v(i)^2 + eps).^((p/2)-1);
+        h(i) = (v(i)^2 + eps).^((q/2)-1);
     end
     Xnew(sub2ind(size(Xnew), mis_i, mis_j)) = v;
     

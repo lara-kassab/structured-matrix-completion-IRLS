@@ -6,7 +6,7 @@
 
 % -------------- LAST UPDATE: 12/13/2019 -------------- %
 
-function [error_structured_sIRLS,Xalgo] = run_structured_sIRLS(q,p,Y,M,m,n,r,rknown, mis_i,mis_j,user)
+function [error_structured_sIRLS,Xalgo] = run_structured_sIRLS(p,q,Y,M,m,n,r,rknown, mis_i,mis_j,user)
 
 % Choose remaining parameters
 measurements = size(M,1);
@@ -15,7 +15,7 @@ numb_ms = measurements; % number of Measurements
 
 rmax = ceil(n*(1 - sqrt(1 - sr))); % used if the rank of the matrix is unknown
 
-niter = 5000; % max number of iterations to perfrom for Structured sIRLS
+niter = 1000; % max number of iterations to perfrom for Structured sIRLS
 incr = 100; % parameter in rand_svd
 tol = 1e-5; % Tolerance for convergence
 
@@ -26,7 +26,7 @@ fprintf('\n Algorithm begins...');
 fprintf('\n -------------------\n\n');
 
 % run Structured sIRLS algorithm
-[avgiterno, TT,timeperiter, TTcpu, Xalgo] = structured_sirls_pq(m,n,r,rmax,rknown,q,p,tol,niter,incr,M, mis_i, mis_j);
+[avgiterno, TT,timeperiter, TTcpu, Xalgo] = structured_sirls_pq(m,n,r,rmax,rknown,p,q,tol,niter,incr,M, mis_i, mis_j);
 
 % compute the error of Structured sIRLS
 error_structured_sIRLS = norm(Y - Xalgo, 'fro')/norm(Y, 'fro');

@@ -1,4 +1,4 @@
-%% -------------- sIRLS-q (0 <= p <= 1) algorithm -------------------- %
+%% -------------- sIRLS-p (0 <= p <= 1) algorithm -------------------- %
 
 %% ----- This is the code associated with the paper:
 % ----- "Iterative Reweighted Algorithms for Matrix Rank Minimization"

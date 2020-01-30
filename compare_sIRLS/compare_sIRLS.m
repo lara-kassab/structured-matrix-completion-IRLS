@@ -122,6 +122,7 @@ end
 %% ------------- FIGURES -------------
 % Plot for the ratio between the average error of the two methods
 relError =  errorMatB./errorMatA; % (errors of Structured sIRLS-q,p)/(errors of sIRLS-q,p)
+relError(isnan(relError)) = 1;
 
 figure;
 imagesc(rate2_vector, rate1_vector, flipud(relError))

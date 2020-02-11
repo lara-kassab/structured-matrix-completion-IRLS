@@ -110,8 +110,8 @@ if mask_extra == 1
     
 end
 
-% Find the error using sIRLS-q
-[~, Xalgo] = run_sIRLS_q(p,Y_original,M,m,n,r,rknown,2,1);
+% Find the error using sIRLS-p
+[~, Xalgo] = run_sIRLS_p(p,Y_original,M,m,n,r,rknown,2,1);
 
 % Find the error using Structured sIRLS-q,p
 [~, Xalgo_s] = run_structured_sIRLS(p,q,Y_original,M,m,n,r,rknown,mis_i,mis_j,1);

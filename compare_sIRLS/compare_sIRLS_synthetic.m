@@ -95,8 +95,8 @@ for k = 1 : numMat
     % Construct M for sIRLS
     M = [Obs_i, Obs_j, Y(sub2ind(size(Y), Obs_i, Obs_j))];
     
-    % Find the error using sIRLS-q
-    [err_sIRLS, Xalgo] = run_sIRLS_q(p,Y,M,m,n,r,rknown,2,0);
+    % Find the error using sIRLS-p
+    [err_sIRLS, Xalgo] = run_sIRLS_p(p,Y,M,m,n,r,rknown,2,0);
     error_sIRLS = error_sIRLS + err_sIRLS;
     
     % Find the error using Structured sIRLS-q,p

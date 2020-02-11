@@ -29,18 +29,18 @@ if mask_extra == 1
     % note -- the masked entries are not guaranteed to be sparse
 end
 
-q = 1; % sIRLS low-rankness parameter
-p = 1; % Structured sIRLS sparsity parameter
+p = 1; % sIRLS low-rankness parameter
+q = 1; % Structured sIRLS sparsity parameter
 
 %% ------------- END OF INPUTS -------------
 
 % Check if the inputs q, p are between 0 and 1
-while(q < 0 || q > 1)
-    q = input('\n Enter a real number between 0 and 1:  ');
-end
-
 while(p < 0 || p > 1)
     p = input('\n Enter a real number between 0 and 1:  ');
+end
+
+while(q < 0 || q > 1)
+    q = input('\n Enter a real number between 0 and 1:  ');
 end
 
 % Check if rknown equals 0 or 1 only
@@ -111,7 +111,7 @@ if mask_extra == 1
 end
 
 % Find the error using Structured sIRLS-q,p
-[~, Xalgo_s] = run_structured_sIRLS(q,p,Y_original,M,m,n,r,rknown,mis_i,mis_j,1);
+[~, Xalgo_s] = run_structured_sIRLS(p,q,Y_original,M,m,n,r,rknown,mis_i,mis_j,1);
 
 if mask_extra == 1
     % Find the recovered extra masked entries

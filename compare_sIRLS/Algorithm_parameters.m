@@ -2,14 +2,14 @@
 
 
 
-function [sr,p,rmax,fr,eta,niter,svditer,incr,gam0,gammin,tol] = Algorithm_parameters(n,r,non_zero,type)
+function [sr,meas,rmax,fr,eta,niter,svditer,incr,gam0,gammin,tol] = Algorithm_parameters(n,r,non_zero,type)
 
 if type == 2
     
     sr = non_zero/(n*n);
-    p = non_zero; % # Measurements
+    meas = non_zero; % # Measurements
     rmax = ceil(n*(1 - sqrt(1 - sr)));
-    fr = r*(2*n - r)/p;
+    fr = r*(2*n - r)/meas;
     if(fr < 0.4)
         eta = 1.1;
         niter = 500;

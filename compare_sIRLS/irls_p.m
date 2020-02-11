@@ -1,4 +1,4 @@
-%% -------------- IRLS-q (0 <= q <= 1) algorithm -------------------- %
+%% -------------- IRLS-p (0 <= p <= 1) algorithm -------------------- %
 
 %% ----- This is the code associated with  the paper:
 % ----- "Iterative Reweighted Algorithms for Matrix Rank Minimization"
@@ -7,7 +7,7 @@
 % -------------- LAST UPDATE: 8/28/2012 ------------------------------ %
 
 
-function [NS, avgerr,avgiterno, TT,timeperiter, TTcpu,Xnew] = irls_q(m,n,sr,r,rmax,rknown,eta,gam0,gammin,q,tol,nrg,niter,svditer,incr,type,M)
+function [NS, avgerr,avgiterno, TT,timeperiter, TTcpu,Xnew] = irls_p(m,n,sr,r,rmax,rknown,eta,gam0,gammin,p,tol,nrg,niter,svditer,incr,type,M)
 
 
 
@@ -67,7 +67,7 @@ while(k<niter)
     [U,S,V] = rand_svd(Xnew,count,k,svditer,incr);
      s = diag(S);
      g = gam*ones(count,1); s = s(1:count,1);
-     D1 = diag( (g.^(1 - q/2))./((s.*s + g).^(1 - q/2))- ones(count,1));
+     D1 = diag( (g.^(1 - p/2))./((s.*s + g).^(1 - p/2))- ones(count,1));
      V = V(:,1:count);
     
      count = min(size(find(s > max(s)*1e-2),1)+extra_rank,rmax); 
@@ -127,7 +127,7 @@ while(k<niter)
     [U,S,V] = rand_svd(Xnew,count,k,svditer,incr);
      s = diag(S);
      g = gam*ones(count,1); s = s(1:count,1);
-     D1 = diag( (g.^(1 - q/2))./((s.*s + g).^(1 - q/2))- ones(count,1));
+     D1 = diag( (g.^(1 - p/2))./((s.*s + g).^(1 - p/2))- ones(count,1));
      V = V(:,1:count);
     
      count = min(size(find(s > max(s)*1e-2),1)+extra_rank,rmax); 

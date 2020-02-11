@@ -64,7 +64,7 @@ end;
 %% CHOOSE ALL REMAINING PARAMETERS
 
 if type == 1
-[m,n,sr,p,r,rmax,fr,eta,svditer,incr,niter] = Probinstances(h,ins);
+[m,n,sr,meas,r,rmax,fr,eta,svditer,incr,niter] = Probinstances(h,ins);
 gam0 = 1e-2; gammin = 1e-10; %Choose the gamma parameters - Initial and final.
 tol = 1e-3; % Tolerance for convergence
 M = zeros(m,n);
@@ -72,7 +72,7 @@ end;
 
 if(type == 2)
     non_zero = size(M,1);
-    [sr,p,rmax,fr,eta,niter,svditer,incr,gam0,gammin,tol] = Algorithm_parameters(n,r,non_zero,type);
+    [sr,meas,rmax,fr,eta,niter,svditer,incr,gam0,gammin,tol] = Algorithm_parameters(n,r,non_zero,type);
 end;
 
 q = 1; %sIRLS-q: Choose a q between 0 and 1
@@ -99,10 +99,10 @@ fprintf('\n -------------------\n\n');
 %% ----------- OUTPUT ---------------------- %%
 
 if(type == 1)
-fprintf('\n\n m = %d, n = %d, r = %d, p = %d, samp.ratio = %3.2f, freedom = %3.2f, eta = %1.3f \n', m,n,r,p,sr,fr,eta);
+fprintf('\n\n m = %d, n = %d, r = %d, measurements = %d, samp.ratio = %3.2f, freedom = %3.2f, eta = %1.3f \n', m,n,r,meas,sr,fr,eta);
 fprintf(' NS = %d, Avg Rec Err. = %0.5f,Avg # Iters = %d, Avg clock time = %3.2f,Clock time/iter = %3.3f Avg cpu time = %3.2f \n\n\n', NS, avgerr,avgiterno, TT,timeperiter, TTcpu);
 else
-fprintf('\n\n m = %d, n = %d, r = %d, p = %d, samp.ratio = %3.2f, freedom = %3.2f, eta = %1.3f \n', m,n,r,p,sr,fr,eta);
+fprintf('\n\n m = %d, n = %d, r = %d, measurements = %d, samp.ratio = %3.2f, freedom = %3.2f, eta = %1.3f \n', m,n,r,meas,sr,fr,eta);
 fprintf(' # Iters = %d, Clock time = %3.2f, Clock time/iter = %3.3f Cpu time = %3.2f \n\n\n', avgiterno, TT,timeperiter, TTcpu);
 end;
 

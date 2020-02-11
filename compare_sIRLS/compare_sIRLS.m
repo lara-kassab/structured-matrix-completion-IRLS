@@ -107,7 +107,7 @@ for k = 1 : numMat
             M = [Obs_i, Obs_j, Y(sub2ind(size(Y), Obs_i, Obs_j))];
             
             % Find the error using sIRLS-p
-            errorMatA(i,j) = errorMatA(i,j) + run_sIRLS_q(p,Y,M,m,n,r,rknown,2,0);
+            errorMatA(i,j) = errorMatA(i,j) + run_sIRLS_p(p,Y,M,m,n,r,rknown,2,0);
             
             % Find the error using Structured sIRLS-q,p
             errorMatB(i,j) = errorMatB(i,j) + run_structured_sIRLS(p,q,Y,M,m,n,r,rknown, mis_i, mis_j,0);

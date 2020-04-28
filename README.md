@@ -1,4 +1,4 @@
-# structured-matrix-completion-IRLS
+# An Iterative Method for Structured Matrix Completion
 This is the code associated with the paper: "An Iterative Method for Structured Matrix Completion"
 By Henry Adams, Lara Kassab, and Deanna Needell.
 
@@ -8,7 +8,8 @@ Further, when comparing both algorithms we use the code fully.
 The code is found in the folders with the corresponding 'sIRLS_read_me.txt' file.
 
 
-### To run Structured sIRLS: Open the folder "structured_sIRLS" 
+### To run Structured sIRLS: 
+####  Open the folder "structured_sIRLS" 
 1. Use structured_sIRLS_synthetic.m to run Structured sIRLS on synthetically generated data.
 
 2. Use structured_sIRLS_user.m to run Structured sIRLS on user inputted data.
@@ -20,7 +21,8 @@ The code is found in the folders with the corresponding 'sIRLS_read_me.txt' file
 
 
 
-### To compare between sIRLS and Structured sIRLS or to reproduce the plots in the paper: Open the folder "compare_sIRLS" 
+### To compare between sIRLS and Structured sIRLS or to reproduce the plots in the paper: 
+#### Open the folder "compare_sIRLS" 
 1. Use compare_sIRLS_synthetic.m to test sIRLS and Structured sIRLS on synthetically generated data.
 
 2. Use compare_sIRLS_user.m to test sIRLS and Structured sIRLS on user inputted data.

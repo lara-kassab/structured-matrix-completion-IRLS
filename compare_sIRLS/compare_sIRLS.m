@@ -64,6 +64,7 @@ for k = 1 : numMat
     YR = sprand(r,n,0.5);
     Y = YL*YR; Y = full(Y);
     Y = Y/norm(Y);
+    Y0 = Y;
     
     for i = 1 : r1
         rate1 = rate1_vector(i);
@@ -111,6 +112,9 @@ for k = 1 : numMat
             
             % Find the error using Structured sIRLS-q,p
             errorMatB(i,j) = errorMatB(i,j) + run_structured_sIRLS(q,p,Y,M,m,n,r,rknown, mis_i, mis_j,0);
+            
+            % Reset Y to original value
+            Y = Y0;
             
             fprintf('\n\n Working with matrix number %2.1f, \n Sampling rate of nonzero entries = %2.2f, \n Sampling rate of zero entries = %2.2f \n\n', k, rate1, rate2);
             

@@ -1,5 +1,5 @@
 # An Iterative Method for Structured Matrix Completion
-This is the code associated with the paper: "An Adaptation for Iterative Structured MatrixCompletion"
+This is the code associated with the paper: "An Adaptation for Iterative Structured Matrix Completion"
 By Henry Adams, Lara Kassab, and Deanna Needell.
 
 In the implementation of our code, we use parts of the code corresponding to the paper 
